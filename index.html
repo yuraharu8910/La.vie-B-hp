@@ -41,9 +41,6 @@
     <!-- HEADER（固定：ロゴ・ハンバーガー） -->
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="#top" aria-label="La vie belle.mf">
-          <img src="images/logo.png" alt="La vie belle.mf" class="logo">
-        </a>
 
 
         <!-- 既存：スマホ用 -->
@@ -62,7 +59,11 @@
     <main>
       <!-- HERO（390×786 ぴったり） -->
       <section class="hero" id="top" aria-label="Hero">
-        <img class="hero-bg" src="images/bg-hero.webp" alt="施術イメージ">
+        <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="images/hero-poster.jpg">
+          <source src="videos/hero.mp4" type="video/mp4">
+        </video>
+
+
 
         <!-- キャッチ（Figma: 255×70） -->
         <h1 class="hero-title" aria-label="頑張っているあなたへ 極上の癒しを。">
@@ -71,9 +72,15 @@
         </h1>
       </section>
 
-      <!-- CONSEPT -->
+      <!-- ✅ HEROとCONSEPTの間のロゴ（大きめ） -->
+      <div class="between-logo" aria-label="La vie belle.mf ロゴ">
+        <img src="images/logo.png" alt="La vie belle.mf" class="between-logo__img">
+      </div>
+
+
+      <!-- CONCEPT -->
       <section class="section concept" id="concept"><!-- CONSEPT -->
-        <h2 class="section-title">CONSEPT</h2>
+        <h2 class="section-title">CONCEPT</h2>
 
         <div class="concept-body">
           <h3 class="concept-lead">
@@ -174,7 +181,7 @@
 
           <!-- 2 -->
           <article class="flow-item">
-            <img class="flow-photo" src="images/img-flow-2.webp" alt="ドレナージュ＆経絡調整">
+            <img class="flow-photo" src="images/img-flow-2.jpg" alt="ドレナージュ＆経絡調整">
 
             <h3 class="flow-step">
               <span class="flow-step__num">2.</span>
@@ -191,7 +198,7 @@
 
           <!-- 3 -->
           <article class="flow-item">
-            <img class="flow-photo" src="images/img-flow-3.webp" alt="顔筋リフト＆感情リリース">
+            <img class="flow-photo" src="images/img-flow-3.jpg" alt="顔筋リフト＆感情リリース">
 
             <h3 class="flow-step">
               <span class="flow-step__num">3.</span>
@@ -208,7 +215,7 @@
 
           <!-- 4 -->
           <article class="flow-item">
-            <img class="flow-photo" src="images/img-flow-4.webp" alt="仙骨セラピー">
+            <img class="flow-photo" src="images/img-flow-4.jpg" alt="仙骨セラピー">
 
             <h3 class="flow-step">
               <span class="flow-step__num">4.</span>
@@ -225,7 +232,7 @@
 
           <!-- 5 -->
           <article class="flow-item">
-            <img class="flow-photo" src="images/img-flow-5.webp" alt="頭蓋骨バランス">
+            <img class="flow-photo" src="images/img-flow-5.jpg" alt="頭蓋骨バランス">
 
             <h3 class="flow-step">
               <span class="flow-step__num">5.</span>
@@ -276,7 +283,7 @@
 
           <!-- MENU ITEM 1 -->
           <article class="menu-item">
-            <div class="menu-photo"><img src="images/img-menu-2.webp" alt="美心還顔セラピー"></div>
+            <div class="menu-photo"><img src="images/img-menu-1.jpg" alt="美心還顔セラピー"></div>
             <div class="menu-header">
               <h3 class="menu-name">美心還顔セラピー<br><span class="menu-sub">facial remedy®</span></h3>
               <p class="menu-price">120分 / 23,000円<span class="tax">(税込)</span></p>
@@ -287,7 +294,7 @@
 
           <!-- MENU ITEM 2 -->
           <article class="menu-item">
-            <div class="menu-photo"><img src="images/img-menu-1.webp" alt="還顔セラピー"></div>
+            <div class="menu-photo"><img src="images/img-menu-2.jpg" alt="還顔セラピー"></div>
             <div class="menu-header">
               <h3 class="menu-name">還顔セラピー<br><span class="menu-sub">facial remedy®</span></h3>
               <p class="menu-price">90分 / 18,000円<span class="tax">(税込)</span></p>
@@ -298,7 +305,7 @@
           <!-- MENU ITEM 3 -->
           <article class="menu-item">
             <div class="menu-photo">
-              <img src="images/img-menu-3.webp" alt="ネックデコルテ or ハンドトリートメント イメージ" loading="lazy">
+              <img src="images/img-menu-3.jpg" alt="ネックデコルテ or ハンドトリートメント イメージ" loading="lazy">
             </div>
 
             <div class="menu-header">
@@ -318,7 +325,7 @@
           <!-- MENU ITEM 4 -->
           <article class="menu-item">
             <div class="menu-photo">
-              <img src="images/img-menu-4.webp" alt="若石足揉み イメージ" loading="lazy">
+              <img src="images/img-menu-4.jpg" alt="若石足揉み イメージ" loading="lazy">
             </div>
 
             <div class="menu-header">
