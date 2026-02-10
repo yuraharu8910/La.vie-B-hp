@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // ✅ここがポイント：カード列が来たら開始
                 trigger: rail,
-                start: "top 30%",
+                start: "top 40%",
 
                 end: () => `+=${getDistance()}`,
                 scrub: 1.8,
