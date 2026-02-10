@@ -43,17 +43,41 @@
       <div class="header-inner">
 
 
-        <!-- 既存：スマホ用 -->
+        <!-- PC用：ナビ（中央）※SPでは非表示 -->
+        <nav class="pc-nav" aria-label="グローバルナビ">
+          <a href="#concept" class="pc-nav__link">CONSEPT</a>
+          <a href="#flow" class="pc-nav__link">FLOW</a>
+          <a href="#menu" class="pc-nav__link">MENU</a>
+          <a href="#staff" class="pc-nav__link">STAFF</a>
+          <a href="#offer" class="pc-nav__link">OFFER</a>
+          <a href="#access" class="pc-nav__link">ACCESS</a>
+          <a href="#qa" class="pc-nav__link">Q&amp;A</a>
+        </nav>
+
+        <!-- PC用：SNS（右）※SPでは非表示 -->
+        <div class="header-sns" aria-label="SNSリンク">
+          <a class="header-sns__link" href="https://instagram.com/YOUR_ID" target="_blank" rel="noopener"
+            aria-label="Instagram">
+            <img src="images/icon-instagram.svg" alt="">
+          </a>
+          <a class="header-sns__link" href="https://line.me/R/ti/p/@YOUR_LINE_ID" target="_blank" rel="noopener"
+            aria-label="LINE">
+            <img src="images/icon-line.svg" alt="">
+          </a>
+        </div>
+
+        <!-- SP用：既存ハンバーガー（そのまま） -->
         <button class="hamburger" type="button" aria-label="メニューを開く">
           <span class="hamburger__line"></span>
           <span class="hamburger__line"></span>
           <span class="hamburger__line"></span>
         </button>
+
       </div>
     </header>
 
     <!-- 既存：予約ボタン -->
-    <a class="reserve-fab" href="..." aria-label="予約">...</a>
+    <a class="reserve-fab" href="https://lin.ee/0BOeEbY" aria-label="予約">...</a>
 
 
     <main>
@@ -79,7 +103,7 @@
 
 
       <!-- CONCEPT -->
-      <section class="section concept" id="concept"><!-- CONSEPT -->
+      <section class="section concept" id="concept"><!-- CONCEPT -->
         <h2 class="section-title">CONCEPT</h2>
 
         <div class="concept-body">
@@ -166,112 +190,123 @@
           <article class="flow-item">
             <img class="flow-photo" src="images/img-flow-1.jpg" alt="セラムクレンジング">
 
-            <h3 class="flow-step">
-              <span class="flow-step__num">1.</span>
-              <span class="flow-step__jp">セラムクレンジング</span>
-            </h3>
+            <!-- ✅ 右側の箱（追加） -->
+            <div class="flow-body">
+              <h3 class="flow-step">
+                <span class="flow-step__num">1.</span>
+                <span class="flow-step__jp">セラムクレンジング</span>
+              </h3>
 
-            <p class="flow-step__en">CLEANSING</p>
-            <p class="flow-tag">“Release &amp; Reset”</p>
+              <p class="flow-step__en">CLEANSING</p>
+              <p class="flow-tag">“Release &amp; Reset”</p>
 
-            <p class="flow-desc">
-              機械もブラシも使わない、オールハンドの極上クレンジング。美容液で洗う贅沢は、肌だけでなく心までほぐしてくれる。はじまりから深呼吸したくなる、至福の時間。
-            </p>
+              <p class="flow-desc">
+                機械もブラシも使わない、オールハンドの極上クレンジング。美容液で洗う贅沢は、肌だけでなく心までほぐしてくれる。はじまりから深呼吸したくなる、至福の時間。
+              </p>
+            </div>
           </article>
 
           <!-- 2 -->
           <article class="flow-item">
             <img class="flow-photo" src="images/img-flow-2.jpg" alt="ドレナージュ＆経絡調整">
 
-            <h3 class="flow-step">
-              <span class="flow-step__num">2.</span>
-              <span class="flow-step__jp">ドレナージュ＆経絡調整</span>
-            </h3>
+            <div class="flow-body">
+              <h3 class="flow-step">
+                <span class="flow-step__num">2.</span>
+                <span class="flow-step__jp">ドレナージュ＆経絡調整</span>
+              </h3>
 
-            <p class="flow-step__en">LYMPHATIC DRAINAGE</p>
-            <p class="flow-tag">“Flow Freely”</p>
+              <p class="flow-step__en">LYMPHATIC DRAINAGE</p>
+              <p class="flow-tag">“Flow Freely”</p>
 
-            <p class="flow-desc">
-              老廃物をやさしく流し、滞りを整えてむくみもすっきり。頬や目元がふわっと引きあがり、気持ちまで軽やかに解放される。
-            </p>
+              <p class="flow-desc">
+                老廃物をやさしく流し、滞りを整えてむくみもすっきり。頬や目元がふわっと引きあがり、気持ちまで軽やかに解放される。
+              </p>
+            </div>
           </article>
 
           <!-- 3 -->
           <article class="flow-item">
             <img class="flow-photo" src="images/img-flow-3.jpg" alt="顔筋リフト＆感情リリース">
 
-            <h3 class="flow-step">
-              <span class="flow-step__num">3.</span>
-              <span class="flow-step__jp">顔筋リフト＆感情リリース</span>
-            </h3>
+            <div class="flow-body">
+              <h3 class="flow-step">
+                <span class="flow-step__num">3.</span>
+                <span class="flow-step__jp">顔筋リフト＆感情リリース</span>
+              </h3>
 
-            <p class="flow-step__en">MUSCLE THERAPY</p>
-            <p class="flow-tag">“Lift &amp; Let Go”</p>
+              <p class="flow-step__en">MUSCLE THERAPY</p>
+              <p class="flow-tag">“Lift &amp; Let Go”</p>
 
-            <p class="flow-desc">
-              表情筋をほぐしながら引き上げ、こわばりや感情のしこりをゆるめる。終わったあとは、心の奥までゆるんで、鏡に映る自分が少しやさしく笑っている。
-            </p>
+              <p class="flow-desc">
+                表情筋をほぐしながら引き上げ、こわばりや感情のしこりをゆるめる。終わったあとは、心の奥までゆるんで、鏡に映る自分が少しやさしく笑っている。
+              </p>
+            </div>
           </article>
 
           <!-- 4 -->
           <article class="flow-item">
             <img class="flow-photo" src="images/img-flow-4.jpg" alt="仙骨セラピー">
 
-            <h3 class="flow-step">
-              <span class="flow-step__num">4.</span>
-              <span class="flow-step__jp">仙骨セラピー</span>
-            </h3>
+            <div class="flow-body">
+              <h3 class="flow-step">
+                <span class="flow-step__num">4.</span>
+                <span class="flow-step__jp">仙骨セラピー</span>
+              </h3>
 
-            <p class="flow-step__en">SACRAL THERAPY</p>
-            <p class="flow-tag">“Flow from the Source”</p>
+              <p class="flow-step__en">SACRAL THERAPY</p>
+              <p class="flow-tag">“Flow from the Source”</p>
 
-            <p class="flow-desc">
-              仙骨にそっと手を添え、体の奥から新しい流れが生まれ、全身をやさしくめぐっていく。全身のバランスが整い、ぽかぽかと温かさが広がる。深い静けさの中で、心と体がひとつに戻る感覚。
-            </p>
+              <p class="flow-desc">
+                仙骨にそっと手を添え、体の奥から新しい流れが生まれ、全身をやさしくめぐっていく。全身のバランスが整い、ぽかぽかと温かさが広がる。深い静けさの中で、心と体がひとつに戻る感覚。
+              </p>
+            </div>
           </article>
 
           <!-- 5 -->
           <article class="flow-item">
             <img class="flow-photo" src="images/img-flow-5.jpg" alt="頭蓋骨バランス">
 
-            <h3 class="flow-step">
-              <span class="flow-step__num">5.</span>
-              <span class="flow-step__jp">頭蓋骨バランス</span>
-            </h3>
+            <div class="flow-body">
+              <h3 class="flow-step">
+                <span class="flow-step__num">5.</span>
+                <span class="flow-step__jp">頭蓋骨バランス</span>
+              </h3>
 
-            <p class="flow-step__en">SKULL THERAPY</p>
-            <p class="flow-tag">“Clear the Mind”</p>
+              <p class="flow-step__en">SKULL THERAPY</p>
+              <p class="flow-tag">“Clear the Mind”</p>
 
-            <p class="flow-desc">
-              頭蓋骨の歪みを緩め、循環が整った脳脊髄液が全身に満ちて頭の奥までクリアに。目を開けた瞬間──<br>
-              「私、本当はこうしたかったんだった」そんな気持ちが自然と湧きあがる。
-            </p>
+              <p class="flow-desc">
+                頭蓋骨の歪みを緩め、循環が整った脳脊髄液が全身に満ちて頭の奥までクリアに。目を開けた瞬間──<br>
+                「私、本当はこうしたかったんだった」そんな気持ちが自然と湧きあがる。
+              </p>
+            </div>
           </article>
+        </div>
 
-          <!-- 締め -->
-          <div class="flow-end">
-            <p class="flow-end-title">
-              通うたびに変わる、こころとからだ<br>
-              Your Personal Retreat</p>
-            <p class="flow-text">
+        <!-- 締め -->
+        <div class="flow-end">
+          <p class="flow-end-title">
+            通うたびに変わる、こころとからだ<br>
+            Your Personal Retreat</p>
+          <p class="flow-text">
 
-              一度の施術は、まるで自分リトリート。ふっと息が深くなり、思考も心もほどけていく感覚を体験できます。
-            </p>
+            一度の施術は、まるで自分リトリート。ふっと息が深くなり、思考も心もほどけていく感覚を体験できます。
+          </p>
 
-            <p class="flow-text">
-              通ううちに、自然と呼吸が深まる自分へ。気づけば、ストレスに振り回されずに過ごせる毎日が訪れ、やりたいことを軽やかに選べる未来へ。
-            </p>
+          <p class="flow-text">
+            通ううちに、自然と呼吸が深まる自分へ。気づけば、ストレスに振り回されずに過ごせる毎日が訪れ、やりたいことを軽やかに選べる未来へ。
+          </p>
 
-            <!-- 追加：あなたへ -->
-            <p class="flow-end-title">
-              あなたへ<br>
-              This is Where You Return to Yourself
-            </p>
-            <p class="flow-text">
+          <!-- 追加：あなたへ -->
+          <p class="flow-end-title">
+            あなたへ<br>
+            This is Where You Return to Yourself
+          </p>
+          <p class="flow-text">
 
-              La vie belle.mf は、単なるエステではなく、自分の人生を取り戻すための場所。“素直なわたし”に還る時間を、ぜひ一度体験してみてください。
-            </p>
-          </div>
+            La vie belle.mf は、単なるエステではなく、自分の人生を取り戻すための場所。“素直なわたし”に還る時間を、ぜひ一度体験してみてください。
+          </p>
         </div>
       </section>
 
@@ -282,7 +317,7 @@
         <div class="menu-list">
 
           <!-- MENU ITEM 1 -->
-          <article class="menu-item">
+          <article class="menu-item menu-item--featured">
             <div class="menu-photo"><img src="images/img-menu-1.jpg" alt="美心還顔セラピー"></div>
             <div class="menu-header">
               <h3 class="menu-name">美心還顔セラピー<br><span class="menu-sub">facial remedy®</span></h3>
@@ -293,7 +328,7 @@
           </article>
 
           <!-- MENU ITEM 2 -->
-          <article class="menu-item">
+          <article class="menu-item menu-item--small">
             <div class="menu-photo"><img src="images/img-menu-2.jpg" alt="還顔セラピー"></div>
             <div class="menu-header">
               <h3 class="menu-name">還顔セラピー<br><span class="menu-sub">facial remedy®</span></h3>
@@ -303,7 +338,7 @@
           </article>
 
           <!-- MENU ITEM 3 -->
-          <article class="menu-item">
+          <article class="menu-item menu-item--small">
             <div class="menu-photo">
               <img src="images/img-menu-3.jpg" alt="ネックデコルテ or ハンドトリートメント イメージ" loading="lazy">
             </div>
@@ -323,7 +358,7 @@
           </article>
 
           <!-- MENU ITEM 4 -->
-          <article class="menu-item">
+          <article class="menu-item menu-item--small">
             <div class="menu-photo">
               <img src="images/img-menu-4.jpg" alt="若石足揉み イメージ" loading="lazy">
             </div>
@@ -350,13 +385,14 @@
       <section class="section staff" id="staff"><!-- STAFF -->
         <h2 class="section-title">STAFF</h2>
 
-        <div class="staff-photo">
-          <img src="images/img-staff-mutumi.webp" alt="Mutumi（施術者）" loading="lazy">
-        </div>
+        <div class="staff-profile">
+          <div class="staff-photo">
+            <img src="images/img-staff-mutumi.webp" alt="Mutumi（施術者）" loading="lazy">
+          </div>
 
-        <div class="staff-body">
           <p class="staff-name">Mutumi</p>
-
+        </div>
+        <div class="staff-body">
           <p class="staff-text">
             美容部員として10年以上、多くの女性と向き合い、「きれいになりたい」という想いの奥に、疲れや迷い、がんばりすぎてしまう心があることに気づきました…
           </p>
@@ -386,7 +422,7 @@
           </figure>
 
           <!-- CTA（Figmaのミントボタン） -->
-          <a class="offer-btn offer-btn--mint" href="https://line.me/R/ti/p/@YOUR_LINE_ID" target="_blank"
+          <a class="offer-btn offer-btn--mint btn-float" href="https://line.me/R/ti/p/@YOUR_LINE_ID" target="_blank"
             rel="noopener">
             体験予約はこちら
           </a>
@@ -515,10 +551,12 @@
         </p>
 
         <!-- Google Maps（下線＋丸矢印） -->
-        <a class="access-map" href="https://www.google.com/maps/search/?api=1&query=札幌市清田区平岡公園東6丁目" target="_blank"
-          rel="noopener">
-          Google Maps <span class="access-map__icon" aria-hidden="true">↗</span>
-        </a>
+        <div class="map btn-float">
+          <a class="access-map" href="https://www.google.com/maps/search/?api=1&query=札幌市清田区平岡公園東6丁目" target="_blank"
+            rel="noopener">
+            Google Maps <span class="access-map__icon" aria-hidden="true">↗</span>
+          </a>
+        </div>
 
         <div class="access-sep"></div>
 
@@ -546,7 +584,8 @@
             1日営業日以内にご返信致しますので、お気軽にお問い合わせください。
           </p>
 
-          <a class="access-card__btn" href="https://line.me/R/ti/p/@YOUR_LINE_ID" target="_blank" rel="noopener">
+          <a class="access-card__btn btn-float" href="https://line.me/R/ti/p/@YOUR_LINE_ID" target="_blank"
+            rel="noopener">
             ご予約・お問い合わせはこちら
           </a>
         </div>
@@ -558,7 +597,8 @@
     </main>
 
     <!-- ✅ 右下固定：予約ボタン（page内に固定される） -->
-    <a class="reserve-fab" href="https://line.me/R/ti/p/@YOUR_LINE_ID" target="_blank" rel="noopener" aria-label="予約">
+    <a class="reserve-fab btn-float" href="https://line.me/R/ti/p/@YOUR_LINE_ID" target="_blank" rel="noopener"
+      aria-label="予約">
       <span class="reserve-fab__text">予約</span>
       <span class="reserve-fab__icon" aria-hidden="true">
         <img src="images/lsicon_calendar-outline.svg" alt="カレンダー">
@@ -572,7 +612,9 @@
 
         <!-- ロゴ -->
         <div class="footer-logo">
-          <img src="images/logo.png" alt="La vie belle.mf">
+          <a href="#top" aria-label="トップへ戻る">
+            <img src="images/logo.png" alt="La vie belle.mf">
+          </a>
         </div>
 
         <!-- フッターナビ -->
@@ -640,6 +682,8 @@
   </div>
 
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
   <script src="main.js"></script>
 
 </body>
