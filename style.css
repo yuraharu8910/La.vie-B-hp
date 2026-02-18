@@ -3,7 +3,7 @@
 ========================= */
 :root {
   --bg: #fdfaf5;
-  --text: #3c3c3c;
+  --text: #302210;
   --muted: #6a6a6a;
   /* ★var(--muted)の受け皿（これ重要） */
   --line: #e0ddd8;
@@ -357,10 +357,14 @@ p:last-child {
 
 .flow-step__num {
   font-family: var(--serif);
-  font-size: 32px;
+  font-size: 33px;
   letter-spacing: .06em;
+  margin-top: 10px;
   margin-bottom: 4px;
   line-height: 1;
+    font-weight: 300;
+    opacity: 0.22;
+    letter-spacing: 0.06em;
 }
 
 .flow-step__jp {
@@ -398,6 +402,14 @@ p:last-child {
   margin-top: 56px;
 }
 
+.flow-end-lead {
+  margin: 0 0 15px;
+    font-family: var(--serif);
+    font-size: 16px;
+    letter-spacing: .12em;
+    color: #876950;
+    margin-bottom: 150px;
+}
 .flow-end-title {
   margin: 0 0 15px;
   font-family: var(--serif);
@@ -594,8 +606,8 @@ p:last-child {
   width: 100%;
   height: auto;
   display: block;
-      border-radius: 12px;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
 
 .offer .offer-btn--mint {
@@ -1301,30 +1313,17 @@ html.is-menu-open {
   .flow-what-jp,
   .flow-what-en {
     font-size: 28px;
+      line-height: 1.9;
+      letter-spacing: 0.02em;
+      color: #876950;
+      font-family: var(--serif);
   }
 
-  /* 横にはみ出すので隠す（見た目をキレイに） */
-  #flow {
-    overflow: hidden;
-  }
-
-  /* レール（横スクロール） */
-  #flow .flow-list {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    gap: 64px;
-
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-
-    padding: 0 80px 40px;
-    /* 左右余白 + 下余白 */
-    scrollbar-width: none;
-  }
-
-  #flow .flow-list::-webkit-scrollbar {
-    display: none;
+  .flow-list {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    gap: 28px 28px;
   }
 
   /* カード本体（幅固定でスライド） */
@@ -1332,13 +1331,13 @@ html.is-menu-open {
     flex: 0 0 960px;
     height: 340px;
     scroll-snap-align: start;
-
     display: grid;
     grid-template-columns: 1fr 1fr;
     /* 50/50 */
-    background: #F7F3ED;
     border-radius: 18px;
     overflow: hidden;
+    margin-bottom: 80px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
   }
 
   /* 左：画像 */
@@ -1371,14 +1370,14 @@ html.is-menu-open {
 
 
 
-  .flow-step__num {
+  #flow .flow-step__num {
     font-family: var(--serif);
-    font-size: 48px;
-    letter-spacing: .06em;
-
-    margin-bottom: 4px;
-    /* ← 番号 → 英字 */
+    font-size: 72px;
+    font-weight: 300;
+    opacity: 0.22;
+    letter-spacing: 0.06em;
   }
+
 
   /* 1.は消す（01.を使う） */
 
@@ -1438,6 +1437,17 @@ html.is-menu-open {
     text-align: center;
   }
 
+  .flow-end-lead {
+    font-size: 22px;
+    line-height: 2.5;
+    letter-spacing: 0.02em;
+    color: #876950;
+    font-family: var(--serif);
+    padding: 20px;
+    margin-bottom: 150px;
+    margin-top: 40px;
+  }
+
   .flow-end-title {
     font-size: 28px;
     line-height: 1.9;
@@ -1448,6 +1458,52 @@ html.is-menu-open {
     margin-bottom: 20px;
     margin-top: 40px;
   }
+
+  #flow .flow-photo img {
+    transform: scale(1.03);
+  }
+
+  /* =========================================================
+     FLOW：ジグザグ配置
+  ========================================================= */
+    /* ずれ量：しっかり動きが出る */
+    :root {
+      --flow-shift: clamp(80px, 10vw, 200px);
+      --flow-y: 22px;
+    }
+  
+    /* 基本：まず全部0にする */
+    #flow .flow-item {
+      --x: 0px;
+      --y: 0px;
+      transform: translate(var(--x), var(--y));
+      flex: 0 0 960px !important;
+    }
+  
+    /* 偶数だけ右＋少し下 */
+    #flow .flow-item:nth-child(even) {
+      --x: var(--flow-shift);
+      --y: var(--flow-y);
+    }
+  
+    /* 2番：少しだけ控えめ（下げないなら --y は触らない） */
+    #flow .flow-item:nth-child(2) {
+      --x: calc(var(--flow-shift) * 0.9);
+      --y: var(--flow-y);
+      /* 下げたいなら入れる / 不要なら消す */
+    }
+  
+    /* 4番：少し強め */
+    #flow .flow-item:nth-child(4) {
+      --x: calc(var(--flow-shift) * 1.2);
+      --y: var(--flow-y);
+    }
+  
+    #flow .section {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
 
 
   /* メニュー */
