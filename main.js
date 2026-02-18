@@ -57,120 +57,95 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
 /* =========================================================
-   La vie belle.mf - Luxury Motion System
-   統一アニメーション設計
-========================================================= */
-
-(() => {
-    if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
-    gsap.registerPlugin(ScrollTrigger);
-
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) return;
-
-    const mm = gsap.matchMedia();
-
-    mm.add("(min-width: 768px)", () => {
-
-        const BASE = {
-            duration: 1.2,
-            ease: "power2.out",
-            y: 30,
-            opacity: 0
-        };
-
-        // 共通アニメ関数
-        const reveal = (targets, options = {}) => {
-            gsap.from(targets, {
-                ...BASE,
-                ...options,
-                scrollTrigger: {
-                    trigger: targets,
-                    start: "top 85%",
-                    toggleActions: "play none none none"
-                }
-            });
-        };
-
-        /* ---------------- HERO ---------------- */
-        reveal(".hero-title", { y: 40, duration: 1.6 });
-
-        /* ---------------- CONCEPT ---------------- */
-        reveal("#concept .concept-lead");
-        reveal("#concept .concept-text", { stagger: 0.15 });
-
-        /* ---------------- FLOW ---------------- */
-        reveal("#flow .flow-what");
-        reveal("#flow .flow-intro");
-        reveal("#flow .flow-item", {
-            stagger: 0.15,
-            scale: 0.98
-        });
-
-        /* ---------------- MENU ---------------- */
-        reveal("#menu .menu-photo", { stagger: 0.1 });
-        reveal("#menu .menu-header", { stagger: 0.1 });
-        reveal("#menu .menu-desc", { stagger: 0.1 });
-
-        /* ---------------- STAFF ---------------- */
-        reveal("#staff .staff-photo", { duration: 1.4 });
-        reveal("#staff .staff-name");
-        reveal("#staff .staff-text", { stagger: 0.12 });
-
-        /* ---------------- OFFER ---------------- */
-        reveal("#offer .offer-card", {
-            y: 40,
-            duration: 1.4,
-            scale: 0.97
-        });
-        reveal("#offer .offer-btn--mint", {
-            y: 20,
-            duration: 1.2
-        });
-
-        /* ---------------- QA ---------------- */
-        reveal("#qa .qa-item", { stagger: 0.1 });
-
-        /* ---------------- ACCESS ---------------- */
-        reveal("#access .access-photo", { duration: 1.4 });
-        reveal("#access .access-head");
-        reveal("#access .access-text");
-        reveal("#access .access-card", { duration: 1.4 });
-
-        /* ---------------- FOOTER ---------------- */
-        reveal(".footer-logo");
-        reveal(".footer-nav");
-        reveal(".footer-copy");
-
-    });
-
-})();
-
-
-/* =========================================================
-   FLOW：画像だけ軽いパララックス
+   La vie belle.mf - Luxury Motion System (SAFE)
 ========================================================= */
 (() => {
     if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
     gsap.registerPlugin(ScrollTrigger);
 
-    const images = gsap.utils.toArray("#flow .flow-photo");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    images.forEach(img => {
-        gsap.fromTo(img,
-            { y: -20 },
-            {
-                y: 20,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: img,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: true
+    const BASE = {
+        duration: 1.25,
+        ease: "power2.out",
+        y: 26,
+    };
+
+    // 1要素ずつ：triggerを確実に「その要素」にする（安定）
+    const reveal = (selector, options = {}) => {
+        const els = gsap.utils.toArray(selector);
+        if (!els.length) return;
+
+        els.forEach((el, i) => {
+            const yFrom = options.y ?? BASE.y;
+            const dur = options.duration ?? BASE.duration;
+            const ease = options.ease ?? BASE.ease;
+            const delay = (options.stagger ? i * options.stagger : 0);
+
+            gsap.fromTo(
+                el,
+                { autoAlpha: 0, y: yFrom, scale: options.scaleFrom ?? 1 },
+                {
+                    autoAlpha: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: dur,
+                    ease,
+                    delay,
+                    clearProps: "transform,opacity", // 終わったら余計な上書きを残しにくい
+                    scrollTrigger: {
+                        trigger: el,
+                        start: options.start ?? "top 85%",
+                        toggleActions: "play none none none",
+                        once: true,
+                    },
                 }
-            }
-        );
-    });
+            );
+        });
+    };
+
+    /* ---------------- HERO ---------------- */
+    reveal(".hero-title", { y: 34, duration: 1.6 });
+
+    /* ---------------- CONCEPT ---------------- */
+    reveal("#concept .concept-lead", { stagger: 0.08 });
+    reveal("#concept .concept-text", { stagger: 0.06 });
+
+    /* ---------------- FLOW ---------------- */
+    reveal("#flow .flow-what", { stagger: 0.08 });
+    reveal("#flow .flow-intro", { stagger: 0.08 });
+    // ジグザグ transform を崩したくないので scaleは控えめ/無し推奨
+    reveal("#flow .flow-item", { stagger: 0.10, y: 22 });
+
+    /* ---------------- MENU ---------------- */
+    reveal("#menu .menu-photo", { stagger: 0.06 });
+    reveal("#menu .menu-header", { stagger: 0.06 });
+    reveal("#menu .menu-desc", { stagger: 0.06 });
+
+    /* ---------------- STAFF ---------------- */
+    reveal("#staff .staff-photo", { duration: 1.35 });
+    reveal("#staff .staff-name");
+    reveal("#staff .staff-text", { stagger: 0.07 });
+
+    /* ---------------- OFFER ---------------- */
+    reveal("#offer .offer-card", { y: 34, duration: 1.35 });
+    reveal("#offer .offer-btn--mint", { y: 18, duration: 1.1 });
+
+    /* ---------------- QA ---------------- */
+    reveal("#qa .qa-item", { stagger: 0.07 });
+
+    /* ---------------- ACCESS ---------------- */
+    reveal("#access .access-photo", { duration: 1.35 });
+    reveal("#access .access-head");
+    reveal("#access .access-text");
+    reveal("#access .access-card", { duration: 1.35 });
+
+    /* ---------------- FOOTER ---------------- */
+    reveal(".footer-logo");
+    reveal(".footer-nav", { stagger: 0.06 });
+    reveal(".footer-copy");
+
+    // レイアウト確定後に再計算（これ入れると“瞬き”減ります）
+    window.addEventListener("load", () => ScrollTrigger.refresh());
 })();
