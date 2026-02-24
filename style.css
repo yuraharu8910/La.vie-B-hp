@@ -1483,20 +1483,17 @@ html.is-menu-open {
     /* 偶数だけ右＋少し下 */
     #flow .flow-item:nth-child(even) {
       --x: var(--flow-shift);
-      --y: var(--flow-y);
     }
   
     /* 2番：少しだけ控えめ（下げないなら --y は触らない） */
     #flow .flow-item:nth-child(2) {
       --x: calc(var(--flow-shift) * 0.9);
-      --y: var(--flow-y);
       /* 下げたいなら入れる / 不要なら消す */
     }
   
     /* 4番：少し強め */
     #flow .flow-item:nth-child(4) {
       --x: calc(var(--flow-shift) * 1.2);
-      --y: var(--flow-y);
     }
   
     #flow .section {
@@ -2025,3 +2022,4 @@ html.is-menu-open {
     opacity: 0.85;
   }
 }
+
