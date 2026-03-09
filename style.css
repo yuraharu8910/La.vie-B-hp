@@ -52,6 +52,14 @@ body {
   min-height: 100vh;
 }
 
+.footer-sns img,
+.menu-sns img,
+.header-sns img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
 /* =========================
   HEADER（SP）
 ========================= */
