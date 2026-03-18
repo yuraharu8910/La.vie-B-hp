@@ -124,7 +124,6 @@ body {
 
 .hero {
     height: 92vh;
-    min-height: 620px;
 }
 
 
@@ -152,7 +151,7 @@ body {
 /* タイトル（SP） */
 .hero-title {
     position: absolute;
-    top: 140px;
+    top: 110px;
     left: 40%;
     transform: translateX(-50%);
     width: 255px;
@@ -197,9 +196,10 @@ body {
   SECTION（SP）
 ========================= */
 
-section {
-    padding-top: 120px;
-    padding-bottom: 120px;
+.section {
+    padding: 100px 24px;
+    /* 最終版の余白に統一 */
+    background: var(--bg);
 }
 
 .section-title {
@@ -1050,6 +1050,7 @@ p:last-child {
     border-radius: 4px;
     line-height: 1;
 }
+
 
 /* =========================
   STAFF（最終版）
