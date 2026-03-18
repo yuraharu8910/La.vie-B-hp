@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>La vie belle.mfについて</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- FAVICON -->
+    <link rel="icon" href="images/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="images/favicon-32.png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+
+
+    <style>
+        /* =================================
+   ABOUT PAGE
+================================= */
+        .about-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 24px 140px;
+            text-align: center;
+            background: #fdfaf5;
+        }
+
+        /* ページ内セクション */
+        .about-page .section {
+            padding: 0;
+            margin-top: 60px;
+        }
+
+        /* =================================
+   SECTION TITLE
+================================= */
+        .about-page .section-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin: 0 auto 80px;
+            font-family: "Zen Old Mincho", serif;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.6;
+            letter-spacing: 0.22em;
+            color: #82cbbE;
+            text-align: center;
+        }
+
+        .about-page .section-title::before,
+        .about-page .section-title::after {
+            content: "";
+            display: block;
+            width: 48px;
+            height: 1px;
+            background: #c8b8a5;
+
+        }
+
+        /* =================================
+   INNER
+================================= */
+        .about-page .concept-body,
+        .about-page .means-body {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        /* =================================
+   TYPOGRAPHY
+================================= */
+        /* 大見出し */
+        .about-page .concept-lead,
+        .about-page .means-lead {
+            margin: 0 0 24px;
+            font-family: "Zen Old Mincho", serif;
+            font-size: 21px;
+            font-weight: 400;
+            line-height: 2.1;
+            letter-spacing: 0.08em;
+            color: #876950;
+            text-align: center;
+        }
+
+        /* 中見出し */
+        .about-page .concept-title,
+        .about-page .means-title {
+            margin: 0 0 22px;
+            font-family: "Zen Old Mincho", serif;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 2;
+            letter-spacing: 0.04em;
+            color: #876950;
+            text-align: center;
+        }
+
+        /* 本文 */
+        .about-page .concept-text,
+        .about-page .means-text {
+            margin: 0 0 35px;
+            font-family: "Zen Old Mincho", serif;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 2.3;
+            letter-spacing: 0.04em;
+            color: #6a6a6a;
+            text-align: center;
+        }
+
+        /* =================================
+   CONCEPT
+================================= */
+        .about-page .concept-lead+.concept-title {
+            margin-top: 110px;
+        }
+
+        /* =================================
+   MEANS
+================================= */
+        .about-page .means-title {
+            padding: 0;
+            margin-top: 50px;
+        }
+
+        .about-page .means-body {
+            text-align: center;
+            /* 親で中央寄せ */
+        }
+
+        /* リスト */
+        .about-page .means-list {
+            list-style: none;
+            margin: 30px auto 100px;
+            padding: 0;
+
+            display: inline-block;
+            /* ← これが重要 */
+            text-align: left;
+            /* 文字は左 */
+            gap: 28px;
+        }
+
+        .about-page .means-list li {
+            position: relative;
+            margin: 0;
+            padding: 0 0 0 30px;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+
+            font-family: var(--serif);
+            font-size: 15px;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            line-height: 2.4;
+            color: #6a6a6a;
+            margin: 0 0;
+
+        }
+
+        .about-page .means-list li::before {
+            content: "";
+            position: absolute;
+            top: 9px;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #c7b49d;
+            border-radius: 50%;
+            box-sizing: border-box;
+        }
+
+        .about-page .means-list li::after {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 16px;
+            width: 8px;
+            height: 4px;
+            border-left: 2px solid #c7b49d;
+            border-bottom: 2px solid #c7b49d;
+            transform: rotate(-45deg);
+            box-sizing: border-box;
+        }
+
+        /* =================================
+   LINK
+================================= */
+        .about-page .back-top {
+            font-family: var(--serif);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            line-height: 2.4;
+            color: #8a6b4e;
+            margin: 56px 0 40px;
+        }
+
+
+        /* =================================
+   PC
+================================= */
+        @media (min-width: 768px) {
+            .about-page {
+                padding: 180px 40px 220px;
+            }
+
+            .about-page .section+.section {
+                margin-top: 180px;
+            }
+
+            .about-page .section-title {
+                margin-bottom: 88px;
+                gap: 28px;
+                font-size: 22px;
+            }
+
+            .about-page .section-title::before,
+            .about-page .section-title::after {
+                width: 56px;
+            }
+
+
+            .about-page .concept-lead,
+            .about-page .means-lead {
+                margin-bottom: 48px;
+                font-size: 26px;
+                line-height: 1.95;
+            }
+
+            .about-page .concept-title,
+            .about-page .means-title {
+                margin-top: 40px;
+                margin-bottom: 50px;
+                padding: 0 20px;
+                font-size: 22px;
+                line-height: 2.3;
+                letter-spacing: 0.02em;
+            }
+
+            .about-page .concept-text,
+            .about-page .means-text {
+                margin-bottom: 50px;
+                font-size: 18px;
+                line-height: 2.3;
+                letter-spacing: 0.03em;
+            }
+
+            .about-page .concept-text+.concept-lead {
+                margin-top: 84px;
+            }
+
+            .about-page .means-list {
+                width: fit-content;
+                max-width: 100%;
+                margin: 60px auto 110px;
+                gap: 28px;
+            }
+
+            .about-page .means-list li {
+                padding-left: 64px;
+                font-size: 18px;
+                line-height: 2.1;
+                letter-spacing: 0.02em;
+                color: #605b5b;
+            }
+
+            .about-page .means-list li::before {
+                top: 4px;
+                width: 30px;
+                height: 30px;
+            }
+
+            .about-page .means-list li::after {
+                left: 10px;
+                top: 13px;
+                width: 9px;
+                height: 5px;
+            }
+
+            .about-page .back-top {
+                margin-top: 96px;
+                font-size: 15px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <div class="page">
+
+        <!-- HEADER -->
+        <header class="site-header">
+            <div class="header-inner">
+
+                <!-- PC用：ナビ（中央）※SPでは非表示 -->
+                <nav class="pc-nav">
+                    <a href="./index.html#concept" class="pc-nav__link">CONCEPT</a>
+                    <a href="./index.html#flow" class="pc-nav__link">FLOW</a>
+                    <a href="./index.html#menu" class="pc-nav__link">MENU</a>
+                    <a href="./index.html#staff" class="pc-nav__link">STAFF</a>
+                    <a href="./index.html#offer" class="pc-nav__link">OFFER</a>
+                    <a href="./index.html#access" class="pc-nav__link">ACCESS</a>
+                    <a href="./index.html#qa" class="pc-nav__link">Q&A</a>
+                    <a href="about.html" class="pc-nav__link">ABOUT</a>
+
+                </nav>
+
+                <!-- PC用：SNS（右）※SPでは非表示 -->
+                <div class="header-sns" aria-label="SNSリンク">
+                    <a class="header-sns__link"
+                        href="https://www.instagram.com/laviebelle_sapporo?igsh=MTdjZzAxMHJreGVjdA%3D%3D&utm_source=qr"
+                        target="_blank" rel="noopener" aria-label="Instagram">
+                        <img src="images/icon-instagram.svg" alt="">
+                    </a>
+                    <a class="header-sns__link" href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener"
+                        aria-label="LINE">
+                        <img src="images/icon-line.svg" alt="">
+                    </a>
+                </div>
+
+
+
+                <button class="hamburger" type="button">
+                    <span class="hamburger__line"></span>
+                    <span class="hamburger__line"></span>
+                    <span class="hamburger__line"></span>
+                </button>
+
+            </div>
+        </header>
+
+        <main class="about-page">
+
+            <!-- CONCEPT -->
+            <section class="section concept" id="concept"><!-- CONCEPT -->
+                <h2 class="section-title">CONCEPT</h2>
+
+                <div class="concept-body">
+                    <h3 class="concept-lead">
+                        誰かの理想を、<br>
+                        いつの間にか生きてない？
+                    </h3>
+
+                    <p class="concept-text">
+                        ちゃんと頑張ってきたのに<br>
+                        鏡に映る自分がどこか疲れて見える<br>
+                        化粧品を足しても満たされない<br>
+                        心も身体も、なんとなく重たい日々
+                    </p>
+
+                    <h3 class="concept-lead">
+                        それは、”ほんとうの私”からの<br>
+                        サインかもしれません
+                    </h3>
+                    <h2 class="concept-title">La vie belle.mf（ラヴィベル）とは</h2>
+                    <p class="concept-text">
+                        東洋医学・心理学・脳科学の知恵をもとに<br>
+                        肌と心の奥に触れる<br>
+                        北海道初上陸、世界唯一無二の<br>
+                        フェイシャルレメディ®︎認定サロンです。
+                    </p>
+
+                    <p class="concept-text">
+                        フェアリータッチ®︎の繊細な手技と香りが<br>
+                        自律神経やホルモンバランス<br>
+                        潜在意識にそっと働きかけ<br>
+                        ”わたしらしさ”を<br>
+                        内側から静かに目覚めさせていきます。
+                    </p>
+
+                    <h3 class="concept-lead">
+                        たまには自分をいちばんにしても<br>
+                        いい日があってもいい<br>
+                    </h3>
+                    <p class="concept-text">
+                        それが、肌をととのえ<br>
+                        心をふわっと軽くしてくれるから。
+                    </p>
+
+                    <p class="concept-text">
+                        La vie belle.mfは<br>
+                        ”わたし”にやさしく還る<br>
+                        その始まりの場所でありたいと願っています。
+                    </p>
+                </div>
+            </section>
+
+
+            <section class="section means" id="means"><!-- CONCEPT -->
+                <h2 class="section-title">MEANS</h2>
+
+                <div class="means-body">
+                    <h3 class="means-lead">
+                        フェイシャルレメディ®︎とは
+                    </h3>
+
+                    <p class="means-title">
+                        予防医学から生まれた、<br>
+                        ”根本美容の新メソッド”
+                    </p>
+
+                    <p class="means-text">
+                        肌の悩みは、表面だけの問題ではありません。<br>
+                        体内環境・骨格・筋肉・思考・感情・生活習慣――<br>
+                        フェイシャルレメディ®は、<br>
+                        それらすべての不調和を根本から整えることで、<br>
+                        本来のあなたへと還っていくための施術です。
+                    </p>
+
+
+                    <ul class="means-list">
+                        <li>体を"あるべき正しい状態"にリセットする</li>
+                        <li>自己治癒力を高め、自分で健康美をキープできるようになる</li>
+                        <li>感情や思考のクセを解放し、ストレスをデトックスする</li>
+                    </ul>
+
+                    <h3 class="means-lead">
+                        フェイシャルエステとの違い
+                    </h3>
+
+                    <p class="means-title">
+                        一瞬の変化より、続く美しさへ
+                    </p>
+
+                    <p class="means-text">
+                        リフトアップも小顔効果も、<br>
+                        一般的なエステで叶います。<br>
+                        でも、それを"どれだけ持続できるか"が、<br>
+                        本当の美容の差
+                    </p>
+
+                    <p class="means-text">
+                        フェイシャルレメディ®は、<br>
+                        顔に現れる悩みの症状ではなく、<br>
+                        その原因にアプローチします。<br>
+                        補完療法のエッセンスをブレンドした独自メソッドで、<br>
+                        施術を重ねるごとに心身が整い、<br>
+                        内側から美しさが溢れ出してきます。
+                    </p>
+
+
+                    <a href="index.html" class="back-top">
+                        トップページへ戻る
+                    </a>
+                </div>
+
+            </section>
+        </main>
+
+
+        <!-- ハンバーガーで開く：オーバーレイ + 右寄せパネル -->
+        <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+            <div class="menu-panel" role="dialog" aria-modal="true" aria-label="サイトメニュー">
+
+                <!-- 右上の×（閉じる） -->
+                <button class="menu-close" type="button" aria-label="メニューを閉じる">×</button>
+
+                <!-- メニュー（縦積み・中央） -->
+                <nav class="menu-nav" aria-label="サイトメニュー">
+                    <a href="index.html#concept" class="menu-link">CONCEPT</a>
+                    <a href="index.html#flow" class="menu-link">FLOW</a>
+                    <a href="index.html#menu" class="menu-link">MENU</a>
+                    <a href="index.html#staff" class="menu-link">STAFF</a>
+                    <a href="index.html#offer" class="menu-link">OFFER</a>
+                    <a href="index.html#qa" class="menu-link">Q&amp;A</a>
+                    <a href="index.html#access" class="menu-link">ACCESS</a>
+                    <a href="about.html" class="menu-link">ABOUT</a>
+                </nav>
+
+                <!-- SNS（下の中央） -->
+                <div class="menu-sns" aria-label="SNSリンク">
+                    <a href="https://www.instagram.com/laviebelle_sapporo?igsh=MTdjZzAxMHJreGVjdA%3D%3D&utm_source=qr"
+                        aria-label="Instagram">
+                        <img src="images/icon-instagram.svg" alt="instagram">
+                    </a>
+                    <a href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener" aria-label="LINE">
+                        <img src="images/icon-line.svg" alt="LINE">
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+        <script src="main.js"></script>
+
+        <div class="fixed-reserve">
+            <a href="https://line.me/R/ti/p/@091pbxqz" class="fixed-reserve-btn">
+                初回体験をLINEで予約する
+            </a>
+        </div>
+</body>
+
+</html>

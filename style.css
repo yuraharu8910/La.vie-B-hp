@@ -1511,183 +1511,296 @@ html.is-menu-open {
 
 
 
-  /* メニュー */
-  /* MENU全体の横幅（ご希望の雰囲気に合わせて調整OK） */
-  .menu .menu-list {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 28px 28px;
-  }
-
-  .menu-name,
-  .menu-price {
-    font-size: 20px;
-    line-height: 1.9;
-    letter-spacing: 0.02em;
-    color: #876950;
-    font-family: var(--serif);
-  }
-
-  .menu-desc {
-    margin: 0;
-    font-family: var(--serif);
-    font-size: 16px;
-    line-height: 1.9;
-    letter-spacing: .02em;
-    color: #605B5B;
-
-    /* ✅ はみ出す場合だけ下でスクロール（見た目を崩さない保険） */
-    overflow: auto;
-    padding-right: 8px;
-  }
-
-  /* 共通：画像 */
-  .menu .menu-photo img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    border-radius: 12px;
-  }
-
-  /* 1枚目（大）：画像 左 / テキスト右（上：タイトル+価格、下：説明） */
-  .menu .menu-item--featured {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    /* 左：画像 / 右：テキスト */
-    grid-template-rows: auto auto;
-    /* 上段：header / 下段：desc */
-    column-gap: 40px;
-    row-gap: 14px;
-    align-items: start;
-  }
-
-  /* 画像は左列の2段ぶち抜き */
-  .menu .menu-item--featured .menu-photo {
-    grid-column: 1;
-    grid-row: 1 / 3;
-    height: 360px;
-    /* ←好みで調整OK */
-  }
-
-  /* headerは右列上段 */
-  .menu .menu-item--featured .menu-header {
-    grid-column: 2;
-    grid-row: 1;
-    /* タイトル左、価格右 */
-    display: grid;
-    column-gap: 24px;
-    align-items: baseline;
-  }
-
-
-  .menu-header {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-top: 20px;
-  }
-
-  /* タイトルは「勝手に縦割れ」しないように */
-  .menu .menu-item--featured .menu-name {
-    margin: 0;
-    word-break: keep-all;
-  }
-
-  /* 説明文は右列下段（価格の下） */
-  .menu .menu-item--featured .menu-desc {
-    grid-column: 2;
-    grid-row: 2;
-    margin: 0;
-    max-width: 520px;
-    /* ←3枚目みたいに“文章幅”を抑えたい時 */
-    line-height: 1.9;
-  }
-
-  /* -------- 下段：小さい3枚 -------- */
-
-  .menu .menu-item--small .menu-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-    min-height: 120px;
-    margin-top: 20px;
-    /* ←余計なズレ防止 */
-  }
-
-  .menu .menu-item--small .menu-photo {
-    height: 190px;
-    /* ←ここも調整ポイント */
-  }
-
-  /* ▼ 2/3/4（小カード）を同じ設計にする */
-  .menu .menu-item--small {
-    grid-column: span 4;
-    display: grid;
-    grid-template-rows: 170px auto 1fr;
-    /* 画像 / ヘッダー / 説明 */
-    gap: 14px;
-    align-items: start;
-  }
-
-  /* ヘッダー（タイトル+価格）を縦に並べて中央寄せ */
-  .menu .menu-item--small .menu-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* 中央揃え */
-    text-align: center;
-    gap: 10px;
-    min-height: 120px;
-    /* ★ここで “タイトルブロックの高さ” を揃える */
-  }
-
-  /* タイトル（どのクラス名でも同じ扱いにする） */
-  .menu .menu-item--small .menu-name,
-  .menu .menu-item--small .menu-name-hand {
-    margin: 0;
-    line-height: 1.4;
-    min-height: 3.2em;
-    /* ★2行分くらい確保（長い/短い差を吸収） */
-  }
-
-  /* サブ（facial remedy など）も同じ扱い */
-  .menu .menu-item--small .menu-sub,
-  .menu .menu-item--small .menu-sub-hand {
-    display: block;
-    margin-top: 6px;
-    font-size: 14px;
-    /* 好みで */
-    opacity: 0.9;
-  }
-
-  /* 価格は “タイトルの下に必ず来る” */
-  .menu .menu-item--small .menu-price {
-    margin: 0;
-    /* 余白は header の gap で管理 */
-    white-space: nowrap;
-  }
-
-  /* 説明文：高さと行数を揃える（長文でも崩れない） */
-  .menu .menu-item--small .menu-desc {
-    margin: 0;
-    line-height: 1.9;
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
-    /* ★4行で揃える（増減OK） */
-    overflow: hidden;
-
-    min-height: calc(1.9em * 4);
-    /* ★4行ぶんの高さを確保 */
-  }
-
+        /* =========================
+       MENU（PC）
+    ========================= */
+    
+        .menu .menu-list {
+          max-width: 1100px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          gap: 28px 28px;
+        }
+    
+        .menu-name,
+        .menu-price {
+          font-size: 20px;
+          line-height: 1.9;
+          letter-spacing: 0.02em;
+          color: #876950;
+          font-family: var(--serif);
+        }
+    
+        .menu-desc {
+          margin: 0;
+          font-family: var(--serif);
+          font-size: 16px;
+          line-height: 1.9;
+          letter-spacing: .02em;
+          color: #605B5B;
+    
+          /* ✅ はみ出す場合だけ下でスクロール（見た目を崩さない保険） */
+          overflow: auto;
+          padding-right: 8px;
+        }
+    
+        /* 共通：画像 */
+        .menu .menu-photo img {
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: cover;
+          border-radius: 12px;
+        }
+    
+        /* =========================
+       MENU 1枚目 FEATURED（PC幅調整版）
+       下3枚の幅感に合わせる
+    ========================= */
+        .menu .menu-item--featured {
+          grid-column: 1 / -1;
+          width: 100%;
+          max-width: 1100px;
+          margin: 0 auto;
+    
+          display: grid;
+          grid-template-columns: 6.5fr 5.5fr;
+          column-gap: 36px;
+          row-gap: 0;
+          align-items: start;
+    
+          padding: 0;
+          border: 0;
+        }
+    
+        /* 左：画像 */
+        .menu .menu-item--featured .menu-photo {
+          grid-column: 1;
+          grid-row: 1 / 3;
+    
+          width: 100%;
+          height: 360px;
+          margin: 0;
+          overflow: hidden;
+          border-radius: 14px;
+        }
+    
+        .menu .menu-item--featured .menu-photo img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          border-radius: 14px;
+          box-shadow: none;
+        }
+    
+        /* 右上：情報 */
+        .menu .menu-item--featured .menu-info-grid {
+          grid-column: 2;
+          grid-row: 1;
+    
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) 170px;
+          grid-template-rows: auto auto;
+          column-gap: 18px;
+          row-gap: 14px;
+    
+          align-items: end;
+          width: 100%;
+          padding: 8px 0 18px;
+          border-bottom: 1px solid #ddd6cc;
+        }
+    
+        /* 左上：タイトル */
+        .menu .menu-item--featured .menu-info-grid .menu-name {
+          grid-column: 1;
+          grid-row: 1;
+    
+          margin: 0;
+          min-width: 0;
+    
+          font-family: var(--serif);
+          font-size: 28px;
+          font-weight: 400;
+          line-height: 1.45;
+          letter-spacing: 0.03em;
+          color: #876950;
+    
+          white-space: nowrap;
+        }
+    
+        /* 右上：人気NO.1 */
+        .menu .menu-item--featured .menu-info-grid .menu-badge {
+          grid-column: 2;
+          grid-row: 1;
+    
+          justify-self: end;
+          align-self: center;
+    
+          margin: 0;
+          padding: 6px 12px;
+    
+          font-family: var(--serif);
+          font-size: 13px;
+          font-weight: 400;
+          line-height: 1;
+          letter-spacing: 0.04em;
+    
+          color: #8f6d54;
+          background: #efe5dc;
+          border-radius: 6px;
+    
+          white-space: nowrap;
+        }
+    
+        /* 左下：英字 */
+        .menu .menu-item--featured .menu-info-grid .menu-sub {
+          grid-column: 1;
+          grid-row: 2;
+    
+          margin: 0;
+    
+          font-family: var(--serif);
+          font-size: 17px;
+          font-weight: 400;
+          line-height: 1.5;
+          letter-spacing: 0.08em;
+          color: #8f6d54;
+    
+          white-space: nowrap;
+        }
+    
+        /* 右下：価格 */
+        .menu .menu-item--featured .menu-info-grid .menu-price {
+          grid-column: 2;
+          grid-row: 2;
+    
+          justify-self: end;
+          align-self: end;
+    
+          margin: 0;
+    
+          font-family: var(--serif);
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 1.4;
+          letter-spacing: 0.02em;
+          color: #8f6d54;
+    
+          white-space: nowrap;
+        }
+    
+        .menu .menu-item--featured .menu-info-grid .menu-price .tax {
+          font-size: 13px;
+          letter-spacing: 0.03em;
+        }
+    
+        /* 右下：本文 */
+        .menu .menu-item--featured .menu-desc {
+          grid-column: 2;
+          grid-row: 2;
+    
+          max-width: 100%;
+          margin: 24px 0 0;
+          padding-right: 0;
+    
+          font-family: var(--serif);
+          font-size: 17px;
+          font-weight: 400;
+          line-height: 2;
+          letter-spacing: 0.02em;
+          color: #605B5B;
+        }
+    
+        /* 既存保険 */
+        .menu .menu-item--featured .menu-header {
+          display: block;
+          margin: 0;
+          padding: 0;
+          border: 0;
+        }
+    
+        /* -------- 下段：小さい3枚 -------- */
+    
+        .menu .menu-item--small .menu-header {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 10px;
+          min-height: 120px;
+          margin-top: 20px;
+          /* ←余計なズレ防止 */
+        }
+    
+        .menu .menu-item--small .menu-photo {
+          height: 190px;
+          /* ←ここも調整ポイント */
+        }
+    
+        /* ▼ 2/3/4（小カード）を同じ設計にする */
+        .menu .menu-item--small {
+          grid-column: span 4;
+          display: grid;
+          grid-template-rows: 170px auto 1fr;
+          /* 画像 / ヘッダー / 説明 */
+          gap: 14px;
+          align-items: start;
+        }
+    
+        /* ヘッダー（タイトル+価格）を縦に並べて中央寄せ */
+        .menu .menu-item--small .menu-header {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          /* 中央揃え */
+          text-align: center;
+          gap: 10px;
+          min-height: 120px;
+          /* ★ここで “タイトルブロックの高さ” を揃える */
+        }
+    
+        /* タイトル（どのクラス名でも同じ扱いにする） */
+        .menu .menu-item--small .menu-name,
+        .menu .menu-item--small .menu-name-hand {
+          margin: 0;
+          line-height: 1.4;
+          min-height: 3.2em;
+          /* ★2行分くらい確保（長い/短い差を吸収） */
+        }
+    
+        /* サブ（facial remedy など）も同じ扱い */
+        .menu .menu-item--small .menu-sub,
+        .menu .menu-item--small .menu-sub-hand {
+          display: block;
+          margin-top: 6px;
+          font-size: 14px;
+          /* 好みで */
+          opacity: 0.9;
+        }
+    
+        /* 価格は “タイトルの下に必ず来る” */
+        .menu .menu-item--small .menu-price {
+          margin: 0;
+          /* 余白は header の gap で管理 */
+          white-space: nowrap;
+        }
+    
+        /* 説明文：高さと行数を揃える（長文でも崩れない） */
+        .menu .menu-item--small .menu-desc {
+          margin: 0;
+          line-height: 1.9;
+    
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 4;
+          /* ★4行で揃える（増減OK） */
+          overflow: hidden;
+    
+          min-height: calc(1.9em * 4);
+          /* ★4行ぶんの高さを確保 */
+        }
   /* スタッフ */
   /* staffセクションは直下要素で2カラムにする（.staff-photo と .staff-body） */
   .staff>.staff-photo,
