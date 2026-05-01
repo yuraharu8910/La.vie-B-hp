@@ -600,18 +600,22 @@
 
     </main>
 
-    <!-- 固定予約ボタン（画面下部・LPと同じ全幅バー） -->
-    <div class="fixed-reserve">
-      <a href="https://line.me/R/ti/p/@091pbxqz" class="fixed-reserve-btn btn-float" target="_blank" rel="noopener">
-        初回体験をLINEで予約する
-      </a>
-    </div>
+    <!-- ✅ 右下固定：予約ボタン（page内に固定される） -->
+    <a class="reserve-fab" href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener" aria-label="予約">
+      <span class="reserve-fab__text">予約</span>
+      <span class="reserve-fab__icon" aria-hidden="true">
+        <img src="images/lsicon_calendar-outline.svg" alt="カレンダー">
+      </span>
+    </a>
+
+
+
     <footer class="site-footer" id="footer">
       <div class="footer-inner">
 
         <!-- ロゴ -->
         <div class="footer-logo">
-          <a href="#top" class="js-scroll-top" aria-label="トップへ戻る">
+          <a href="#top" aria-label="トップへ戻る">
             <img src="images/logo.png" alt="La vie belle.mf">
           </a>
         </div>
@@ -634,11 +638,11 @@
         <!-- SNS -->
         <div class="footer-sns">
           <a href="https://www.instagram.com/laviebelle_sapporo?igsh=MTdjZzAxMHJreGVjdA%3D%3D&utm_source=qr"
-            target="_blank" rel="noopener" aria-label="Instagram">
+            target="_blank" aria-label="Instagram">
             <img src="images/icon-instagram.svg" alt="">
           </a>
-          <a href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener" aria-label="LINE">
-            <img src="images/icon-line.svg" alt="">
+          <a href="https://line.me/R/ti/p/@091pbxqz" target="_blank" aria-label="LINE">
+            <img src="images/icon-line.svg " alt="">
           </a>
         </div>
 

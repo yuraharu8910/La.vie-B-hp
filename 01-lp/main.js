@@ -1,103 +1,133 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const overlay = document.getElementById("menuOverlay");
-    const hamburger = document.querySelector(".hamburger");
-    const closeBtn = overlay.querySelector(".menu-close");
-    const panel = overlay.querySelector(".menu-panel");
-    const links = overlay.querySelectorAll(".menu-link");
+/* =========================================================
+   La vie belle.mf - main.js
+   
+   【構成】
+   1. DOMContentLoaded（DOM読み込み完了後に実行）
+      ├── ハンバーガーメニュー
+      └── トップへスムーズスクロール
+   2. GSAP ScrollTrigger アニメーション（即時実行関数）
+========================================================= */
 
+// DOMContentLoaded：HTMLの読み込みが完了したら実行
+// ※ scriptタグをbodyの末尾に置いている場合は不要なこともあるが、
+//    安全のためにつけておくのが推奨
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* -------------------------------------------------------
+       1. ハンバーガーメニュー
+    ------------------------------------------------------- */
+    const overlay   = document.getElementById("menuOverlay");
+    const hamburger = document.querySelector(".hamburger");
+    const closeBtn  = overlay.querySelector(".menu-close");
+    const links     = overlay.querySelectorAll(".menu-link");
+
+    // メニューを開く
     function openMenu() {
         overlay.classList.add("is-open");
         overlay.setAttribute("aria-hidden", "false");
-        document.documentElement.classList.add("is-menu-open");
+        document.documentElement.classList.add("is-menu-open"); // スクロール禁止
     }
 
+    // メニューを閉じる
     function closeMenu() {
         overlay.classList.remove("is-open");
         overlay.setAttribute("aria-hidden", "true");
-        document.documentElement.classList.remove("is-menu-open");
+        document.documentElement.classList.remove("is-menu-open"); // スクロール解除
     }
 
     hamburger.addEventListener("click", openMenu);
     closeBtn.addEventListener("click", closeMenu);
 
-    // パネル外クリックで閉じる（overlayの“背景”だけをクリックした時）
+    // 背景（オーバーレイ）をクリックしたら閉じる
     overlay.addEventListener("click", (e) => {
         if (e.target === overlay) closeMenu();
     });
 
-    // Escで閉じる
+    // Escキーで閉じる
     document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && overlay.classList.contains("is-open")) closeMenu();
     });
 
-    // リンク押したら閉じる
+    // メニューのリンクをクリックしたら閉じる
     links.forEach((a) => a.addEventListener("click", closeMenu));
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-    const scrollTopLink = document.querySelector('.js-scroll-top');
 
-    if (!scrollTopLink) return;
+    /* -------------------------------------------------------
+       2. トップへスムーズスクロール
+       ※ html { scroll-behavior: smooth; } でも可能だが、
+          Safariの古いバージョンに対応するためJSでも実装している
+    ------------------------------------------------------- */
+    const scrollTopLink = document.querySelector(".js-scroll-top");
 
-    scrollTopLink.addEventListener('click', (e) => {
-        e.preventDefault();
+    if (scrollTopLink) {
+        scrollTopLink.addEventListener("click", (e) => {
+            e.preventDefault(); // デフォルトのジャンプ動作をキャンセル
 
-        const target = document.querySelector('#top');
-        if (!target) return;
-
-        target.scrollIntoView({
-            behavior: 'smooth'
+            const target = document.querySelector("#top");
+            if (target) {
+                target.scrollIntoView({ behavior: "smooth" });
+            }
         });
-    });
-});
+    }
 
-
-
-
-
+}); // DOMContentLoaded ここまで
 
 
 /* =========================================================
-   La vie belle.mf - Unified Fade Up Motion
+   GSAP ScrollTrigger アニメーション
+   
+   【用語解説】
+   - GSAP（ジーサップ）：JavaScriptアニメーションライブラリ
+   - ScrollTrigger：スクロール連動アニメーションのGSAPプラグイン
+   - autoAlpha：opacity（透明度）と visibility を同時に制御するGSAP専用プロパティ
+   - fromTo：開始状態 → 終了状態のアニメーション
 ========================================================= */
 (() => {
+    // GSAPとScrollTriggerが読み込まれていない場合は何もしない
     if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+
     gsap.registerPlugin(ScrollTrigger);
 
+    // アクセシビリティ配慮：ユーザーが「動きを減らす」設定にしている場合は実行しない
+    // （Windowsの「視覚効果を減らす」や macOS の「視差効果を減らす」）
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    /* ---- 共通デフォルト設定 ---- */
     const DEFAULTS = {
-        duration: 1.15,
-        ease: "power2.out",
-        y: 24,
-        start: "top 85%",
+        duration: 1.15,      // アニメーション時間（秒）
+        ease: "power2.out",  // イージング（動きの緩急）
+        y: 24,               // 初期位置のY方向のずれ（px）
+        start: "top 85%",    // スクロールトリガーの開始位置
     };
 
     /**
-     * 1要素ずつ安全に reveal
+     * reveal：1要素ずつフェードインさせる
+     * @param {string} selector - CSSセレクター
+     * @param {object} options  - アニメーション設定の上書き
      */
     const reveal = (selector, options = {}) => {
         const els = gsap.utils.toArray(selector);
-        if (!els.length) return;
+        if (!els.length) return; // 要素がなければスキップ
 
         els.forEach((el, i) => {
             gsap.fromTo(
                 el,
                 {
-                    autoAlpha: 0,
-                    y: options.y ?? DEFAULTS.y,
+                    autoAlpha: 0,            // 初期：非表示
+                    y: options.y ?? DEFAULTS.y, // 初期：少し下にずれた位置
                 },
                 {
-                    autoAlpha: 1,
-                    y: 0,
+                    autoAlpha: 1,            // 終了：表示
+                    y: 0,                    // 終了：元の位置
                     duration: options.duration ?? DEFAULTS.duration,
                     ease: options.ease ?? DEFAULTS.ease,
+                    // stagger（スタッガー）：複数要素を時間差で動かす
                     delay: options.stagger ? i * options.stagger : 0,
-                    clearProps: "opacity,transform",
+                    clearProps: "opacity,transform", // アニメーション後にインラインスタイルを消す
                     scrollTrigger: {
                         trigger: el,
                         start: options.start ?? DEFAULTS.start,
-                        toggleActions: "play none none none",
+                        toggleActions: "play none none none", // 一度だけ再生
                         once: true,
                     },
                 }
@@ -106,7 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     /**
-     * セクション単位で、子要素を順番にふわっと
+     * revealGroup：セクション単位で子要素を順番にふわっとさせる
+     * @param {string} selector      - セクションのセレクター
+     * @param {string} childSelector - 子要素のセレクター
+     * @param {object} options       - アニメーション設定の上書き
      */
     const revealGroup = (selector, childSelector, options = {}) => {
         const sections = gsap.utils.toArray(selector);
@@ -118,16 +151,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             gsap.fromTo(
                 items,
-                {
-                    autoAlpha: 0,
-                    y: options.y ?? DEFAULTS.y,
-                },
+                { autoAlpha: 0, y: options.y ?? DEFAULTS.y },
                 {
                     autoAlpha: 1,
                     y: 0,
                     duration: options.duration ?? DEFAULTS.duration,
                     ease: options.ease ?? DEFAULTS.ease,
-                    stagger: options.stagger ?? 0.12,
+                    stagger: options.stagger ?? 0.12, // 子要素ごとに0.12秒ずらす
                     clearProps: "opacity,transform",
                     scrollTrigger: {
                         trigger: section,
@@ -140,102 +170,103 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    /* ---------------- HERO ---------------- */
-    reveal(".hero-title", { y: 30, duration: 1.4 });
-    reveal(".between-logo", { y: 18, duration: 1.2 });
+    /* ---- HERO ---- */
+    reveal(".hero-title",    { y: 30, duration: 1.4 });
+    reveal(".between-logo",  { y: 18, duration: 1.2 });
 
-    /* ---------------- ABOUT ---------------- */
+    /* ---- ABOUT ---- */
     revealGroup("#about", ".about-lead, .about-text p, .access-card__btn, .cta-note", {
         stagger: 0.14,
         y: 22,
     });
 
-    /* ---------------- PROBLEMS ---------------- */
-    reveal("#problems .section-title", { y: 20 });
-    reveal("#problems .section-sub", { y: 20 });
-    reveal("#problems .problems-list li", { stagger: 0.08, y: 18 });
+    /* ---- PROBLEMS ---- */
+    reveal("#problems .section-title",       { y: 20 });
+    reveal("#problems .section-sub",         { y: 20 });
+    reveal("#problems .problems-list li",    { stagger: 0.08, y: 18 });
     reveal("#problems .problems-message h3", { stagger: 0.12, y: 22 });
 
-    /* ---------------- RESULT ---------------- */
-    reveal("#result .section-title", { y: 20 });
-    reveal("#result .section-sub", { y: 20 });
+    /* ---- RESULT ---- */
+    reveal("#result .section-title",  { y: 20 });
+    reveal("#result .section-sub",    { y: 20 });
     reveal("#result .result-list li", { stagger: 0.08, y: 18 });
-    reveal("#result .cta-group", { y: 18, duration: 1.05 });
+    reveal("#result .cta-group",      { y: 18, duration: 1.05 });
 
-    /* ---------------- CONCEPT ---------------- */
-    reveal("#concept .section-title", { y: 20 });
-    reveal("#concept .concept-lead", { y: 22, duration: 1.2 });
-    reveal("#concept .concept-text p", { stagger: 0.1, y: 20 });
-    reveal("#concept .concept-link-wrap", { y: 16, duration: 1.0 });
+    /* ---- CONCEPT ---- */
+    reveal("#concept .section-title",    { y: 20 });
+    reveal("#concept .concept-lead",     { y: 22, duration: 1.2 });
+    reveal("#concept .concept-text p",   { stagger: 0.1, y: 20 });
+    reveal("#concept .concept-link-wrap",{ y: 16, duration: 1.0 });
 
-    /* ---------------- REASON ---------------- */
-    reveal("#reason .section-title", { y: 20 });
-    reveal("#reason .section-sub", { y: 20 });
-    reveal("#reason .reason-item", { stagger: 0.12, y: 24 });
+    /* ---- REASON ---- */
+    reveal("#reason .section-title",    { y: 20 });
+    reveal("#reason .section-sub",      { y: 20 });
+    reveal("#reason .reason-item",      { stagger: 0.12, y: 24 });
     reveal("#reason .reason-link-wrap", { y: 16, duration: 1.0 });
     reveal("#reason .access-card__btn", { y: 18, duration: 1.05 });
-    reveal("#reason .cta-note", { y: 14, duration: 0.95 });
+    reveal("#reason .cta-note",         { y: 14, duration: 0.95 });
 
-    /* ---------------- OFFER ---------------- */
-    reveal("#offer .section-title", { y: 20 });
-    reveal("#offer .offer-box", { y: 24, duration: 1.2 });
-    reveal("#offer .offer-card", { y: 28, duration: 1.2 });
+    /* ---- OFFER ---- */
+    reveal("#offer .section-title",   { y: 20 });
+    reveal("#offer .offer-box",       { y: 24, duration: 1.2 });
+    reveal("#offer .offer-card",      { y: 28, duration: 1.2 });
     reveal("#offer .offer-btn, #offer .offer-btn--mint, #offer .access-card__btn", {
         y: 18,
         duration: 1.05,
     });
 
-    /* ---------------- FLOW ---------------- */
-    reveal("#flow .section-title", { y: 20 });
-    reveal("#flow .flow-what", { y: 20, duration: 1.1 });
-    reveal("#flow .flow-intro .flow-text", { stagger: 0.12, y: 18 });
-    reveal("#flow .flow-item", { stagger: 0.1, y: 24 });
-    reveal("#flow .flow-end-lead", { y: 22, duration: 1.2 });
-    reveal("#flow .flow-end-title", { stagger: 0.1, y: 20 });
-    reveal("#flow .flow-end .flow-text", { stagger: 0.1, y: 18 });
+    /* ---- FLOW ---- */
+    reveal("#flow .section-title",          { y: 20 });
+    reveal("#flow .flow-what",              { y: 20, duration: 1.1 });
+    reveal("#flow .flow-intro .flow-text",  { stagger: 0.12, y: 18 });
+    reveal("#flow .flow-item",             { stagger: 0.1, y: 24 });
+    reveal("#flow .flow-end-lead",          { y: 22, duration: 1.2 });
+    reveal("#flow .flow-end-title",         { stagger: 0.1, y: 20 });
+    reveal("#flow .flow-end .flow-text",    { stagger: 0.1, y: 18 });
 
-    /* ---------------- MENU ---------------- */
+    /* ---- MENU ---- */
     reveal("#menu .section-title", { y: 20 });
-    reveal("#menu .menu-item", { stagger: 0.12, y: 28, duration: 1.15 });
+    reveal("#menu .menu-item",     { stagger: 0.12, y: 28, duration: 1.15 });
 
-    /* ---------------- STAFF ---------------- */
+    /* ---- STAFF ---- */
     reveal("#staff .section-title", { y: 20 });
-    reveal("#staff .staff-photo", { y: 24, duration: 1.2 });
-    reveal("#staff .staff-name", { y: 18 });
-    reveal("#staff .staff-lead", { stagger: 0.1, y: 18 });
-    reveal("#staff .staff-text", { stagger: 0.1, y: 18 });
+    reveal("#staff .staff-photo",   { y: 24, duration: 1.2 });
+    reveal("#staff .staff-name",    { y: 18 });
+    reveal("#staff .staff-lead",    { stagger: 0.1, y: 18 });
+    reveal("#staff .staff-text",    { stagger: 0.1, y: 18 });
 
-    /* ---------------- VOICE ---------------- */
+    /* ---- VOICE ---- */
     reveal("#voice .section-title", { y: 20 });
-    reveal("#voice .voice-item", { stagger: 0.12, y: 22 });
+    reveal("#voice .voice-item",    { stagger: 0.12, y: 22 });
 
-    /* ---------------- QA ---------------- */
+    /* ---- Q&A ---- */
     reveal("#qa .section-title", { y: 20 });
-    reveal("#qa .qa-item", { stagger: 0.08, y: 18 });
+    reveal("#qa .qa-item",       { stagger: 0.08, y: 18 });
 
-    /* ---------------- ACCESS ---------------- */
-    reveal("#access .section-title", { y: 20 });
-    reveal("#access .access-photo", { y: 24, duration: 1.2 });
-    reveal("#access .access-head", { y: 18 });
-    reveal("#access .access-text", { y: 18 });
-    reveal("#access .map", { y: 16 });
-    reveal("#access .access-block", { stagger: 0.08, y: 16 });
-    reveal("#access .access-card", { y: 22, duration: 1.15 });
+    /* ---- ACCESS ---- */
+    reveal("#access .section-title",  { y: 20 });
+    reveal("#access .access-photo",   { y: 24, duration: 1.2 });
+    reveal("#access .access-head",    { y: 18 });
+    reveal("#access .access-text",    { y: 18 });
+    reveal("#access .map",            { y: 16 });
+    reveal("#access .access-block",   { stagger: 0.08, y: 16 });
+    reveal("#access .access-card",    { y: 22, duration: 1.15 });
 
-    /* ---------------- FINAL CTA ---------------- */
+    /* ---- FINAL CTA ---- */
     reveal("#cta .final-cta__title", { y: 22, duration: 1.2 });
-    reveal("#cta .final-cta__text", { y: 18 });
+    reveal("#cta .final-cta__text",  { y: 18 });
     reveal("#cta .access-card__btn", { y: 18, duration: 1.05 });
-    reveal("#cta .cta-note", { y: 14, duration: 0.95 });
+    reveal("#cta .cta-note",         { y: 14, duration: 0.95 });
 
-    /* ---------------- FOOTER ---------------- */
+    /* ---- FOOTER ---- */
     reveal(".footer-logo", { y: 18 });
-    reveal(".footer-nav", { y: 18 });
-    reveal(".footer-sns", { y: 16 });
+    reveal(".footer-nav",  { y: 18 });
+    reveal(".footer-sns",  { y: 16 });
     reveal(".footer-copy", { y: 14 });
 
-    /* レイアウト確定後に再計算 */
+    // レイアウト確定後（画像読み込み後）にScrollTriggerの位置を再計算
     window.addEventListener("load", () => {
         ScrollTrigger.refresh();
     });
-})();
+
+})(); // 即時実行関数ここまで

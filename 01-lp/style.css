@@ -22,6 +22,11 @@
 
     --panel-w: 300px;
     --panel-h: 526px;
+
+    /* PCレイアウト用変数（@media内で定義されていたものを統合） */
+    --flow-shift: clamp(80px, 10vw, 200px);
+    --flow-y: 22px;
+    --reserve-height: 100px;
 }
 
 * {
@@ -334,9 +339,7 @@ p:last-child {
     margin: 0 0;
 }
 
-.problems-list {
-    margin-bottom: 90px;
-}
+/* ↑ .problems-list の margin-bottom は上のブロックに含まれています */
 
 /* 外側の丸 */
 .problems-list li::before {
@@ -1219,9 +1222,7 @@ p:last-child {
     margin-bottom: 0;
 }
 
-.offer-body {
-    text-align: center;
-}
+/* .offer-body の重複ブロックを削除 */
 
 .offer-card {
     margin: 0 auto 36px;
@@ -2538,11 +2539,7 @@ html.is-menu-open {
     /* =========================================================
      FLOW：ジグザグ配置
   ========================================================= */
-    /* ずれ量：しっかり動きが出る */
-    :root {
-        --flow-shift: clamp(80px, 10vw, 200px);
-        --flow-y: 22px;
-    }
+    /* ずれ量用変数は冒頭の:rootに統合済み */
 
     /* 基本：まず全部0にする */
     #flow .flow-item {
@@ -3279,9 +3276,6 @@ html.is-menu-open {
     /* =========================
    PCだけ：FOOTER 調整
 ========================= */
-    :root {
-        --reserve-height: 100px;
-    }
 
     /* フッター全体：中央寄せ＆少し余白 */
     .site-footer {
