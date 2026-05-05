@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- SEO BASIC -->
@@ -10,14 +10,15 @@
     <meta name="description"
         content="頑張っているあなたへ、極上の癒しを。東洋医学・心理学・脳科学の知恵をもとに、肌と心の奥に触れるオールハンドのフェイシャルレメディ®認定サロン La vie belle.mf（札幌）。" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://example.com/" />
+    <!-- ★本番公開時は実際のURLに変更してください -->
+    <link rel="canonical" href="https://laviebelle-mf.com/" />
 
-    <!-- OGP -->
+    <!-- OGP（SNSでシェアされた時の表示） -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="La vie belle.mf｜美心還顔フェイシャルレメディ®認定サロン（札幌）" />
-    <meta property="og:description" content="頑張っているあなたへ、極上の癒しを。肌と心を“わたしらしさ”へ還す時間。" />
-    <meta property="og:url" content="https://example.com/" />
-    <meta property="og:image" content="https://example.com/images/ogp.jpg" />
+    <meta property="og:description" content="頑張っているあなたへ、極上の癒しを。肌と心を"わたしらしさ"へ還す時間。" />
+    <meta property="og:url" content="https://laviebelle-mf.com/" />
+    <meta property="og:image" content="https://laviebelle-mf.com/images/ogp.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- FAVICON -->
@@ -25,7 +26,7 @@
     <link rel="icon" type="image/png" href="images/favicon-32.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
 
-    <!-- WEB FONT -->
+    <!-- WEB FONT（パフォーマンス改善：preconnectで事前接続） -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -35,13 +36,15 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 
-
 <body>
-    <div class="page"><!-- LAYOUT: 390px fixed canvas -->
-        <!-- HEADER（固定：ロゴ・ハンバーガー） -->
+    <!-- ページ全体を包む箱（390px固定 → PCで拡張） -->
+    <div class="page">
+
+        <!-- ============================================================
+             HEADER（固定：ロゴ・ハンバーガー）
+        ============================================================ -->
         <header class="site-header">
             <div class="header-inner">
-
 
                 <!-- PC用：ナビ（中央）※SPでは非表示 -->
                 <nav class="pc-nav" aria-label="グローバルナビ">
@@ -52,8 +55,7 @@
                     <a href="#offer" class="pc-nav__link">OFFER</a>
                     <a href="#access" class="pc-nav__link">ACCESS</a>
                     <a href="#qa" class="pc-nav__link">Q&amp;A</a>
-                    <a href="about.html" class="menu-link">ABOUT</a>
-
+                    <a href="about.html" class="pc-nav__link">ABOUT</a>
                 </nav>
 
                 <!-- PC用：SNS（右）※SPでは非表示 -->
@@ -69,7 +71,7 @@
                     </a>
                 </div>
 
-                <!-- SP用：既存ハンバーガー（そのまま） -->
+                <!-- SP用：ハンバーガーボタン -->
                 <button class="hamburger" type="button" aria-label="メニューを開く">
                     <span class="hamburger__line"></span>
                     <span class="hamburger__line"></span>
@@ -79,29 +81,33 @@
             </div>
         </header>
 
+        <!-- ============================================================
+             MAIN コンテンツ
+        ============================================================ -->
         <main>
-            <!-- HERO（390×786 ぴったり） -->
+
+            <!-- HERO（動画背景） -->
             <section class="hero" id="top" aria-label="Hero">
                 <video class="hero__video" autoplay muted loop playsinline preload="metadata"
                     poster="images/hero-poster.jpg">
                     <source src="videos/hero.mp4" type="video/mp4">
                 </video>
 
-
-
-                <!-- キャッチ（Figma: 255×70） -->
-                <h1 class="hero-title" aria-label="頑張っているあなたへ 極上の癒しを。">
+                <!-- キャッチコピー -->
+                <h1 class="hero-title" aria-label="頑張っているあなたへ 極上の癒しと、その効果を。">
                     <span class="hero-title__line">頑張っているあなたへ</span>
                     <span class="hero-title__line">極上の癒しと、その効果を。</span>
                 </h1>
             </section>
 
-            <!-- ✅ HEROとCONCEPTの間のロゴ（大きめ） -->
+            <!-- HEROとCONCEPTの間のロゴ -->
             <div class="between-logo" aria-label="La vie belle.mf ロゴ">
                 <img src="images/logo.png" alt="La vie belle.mf" class="between-logo__img">
             </div>
 
-            <!-- ABOUT -->
+            <!-- ============================================================
+                 ABOUT
+            ============================================================ -->
             <section class="section about" id="about">
                 <div class="about-body">
                     <h3 class="about-lead">
@@ -111,10 +117,9 @@
                     <div class="about-text">
                         <p>たるみ・むくみ・疲れ顔に...</p>
                         <p>肌・心・自律神経に寄り添う、<br>札幌のフェイシャルレメディ®︎認定サロン</p>
-                        <p>北海道初上陸。<br>オールハンドで”素直なわたし”に還る時間を。</p>
+                        <p>北海道初上陸。<br>オールハンドで"素直なわたし"に還る時間を。</p>
                     </div>
 
-                    <!-- CTA（Figmaのミントボタン） -->
                     <a class="access-card__btn btn-float" href="https://line.me/R/ti/p/@091pbxqz" target="_blank"
                         rel="noopener">
                         初回体験をLINEで予約する
@@ -125,7 +130,9 @@
                 </div>
             </section>
 
-            <!-- PROBLEMS -->
+            <!-- ============================================================
+                 PROBLEMS
+            ============================================================ -->
             <section class="section problems" id="problems">
                 <h2 class="section-title">PROBLEMS</h2>
 
@@ -143,15 +150,16 @@
                         <li>癒されたいけれど、ただのエステでは物足りない</li>
                     </ul>
 
-
                     <div class="problems-message">
-                        <h3>それは、”ほんとうの私”からの<br>サインかもしれません</h3>
+                        <h3>それは、"ほんとうの私"からの<br>サインかもしれません</h3>
                         <h3>La vie belle.mfは、<br>肌・心・身体に寄り添う<br>フェイシャルサロンです。</h3>
                     </div>
                 </div>
             </section>
 
-            <!-- RESULT -->
+            <!-- ============================================================
+                 RESULT
+            ============================================================ -->
             <section class="section result" id="result">
                 <h2 class="section-title">RESULT</h2>
 
@@ -168,7 +176,6 @@
                         <li>内側から満たされる感覚を味わえる</li>
                     </ul>
 
-                    <!-- CTA（Figmaのミントボタン） -->
                     <div class="cta-group">
                         <a class="access-card__btn btn-float" href="https://line.me/R/ti/p/@091pbxqz" target="_blank"
                             rel="noopener">
@@ -178,14 +185,16 @@
                 </div>
             </section>
 
-
-            <!-- CONCEPT -->
-            <section class="section concept" id="concept"><!-- CONCEPT -->
+            <!-- ============================================================
+                 CONCEPT
+            ============================================================ -->
+            <section class="section concept" id="concept">
                 <h2 class="section-title">CONCEPT</h2>
 
                 <div class="concept-body">
+                    <!-- ★誤字修正：La vie bell.mf → La vie belle.mf -->
                     <h3 class="concept-lead">
-                        La vie bell.mfが<br>
+                        La vie belle.mfが<br>
                         大切にしていること
                     </h3>
 
@@ -194,30 +203,30 @@
                             肌だけでなく、心と身体の状態にも寄り添う<br>
                             フェイシャルレメディ®︎認定サロンです。
                         </p>
-
                         <p>
                             東洋医学・心理学・脳科学の知恵をもとに、<br>
                             オールハンドの繊細な手技で、緊張や強張りを<br>
                             やさしく解いて行きます。
                         </p>
-
                         <p>
                             ただお顔を整えるだけではなく、<br>
-                            ”わたしらしさ”に還る時間を届けたい。<br>
+                            "わたしらしさ"に還る時間を届けたい。<br>
                             10年後の自分を今より好きになってほしい。<br>
                             そんな想いから生まれたサロンです。
                         </p>
                     </div>
+
                     <div class="concept-link-wrap">
                         <a href="about.html" class="text-link">
                             もっと詳しく
                         </a>
                     </div>
-
                 </div>
             </section>
 
-            <!-- REASON -->
+            <!-- ============================================================
+                 REASON
+            ============================================================ -->
             <section class="section reason" id="reason">
                 <h2 class="section-title">REASON</h2>
 
@@ -254,8 +263,6 @@
                     </a>
                 </div>
 
-
-                <!-- CTA（Figmaのミントボタン） -->
                 <a class="access-card__btn btn-float" href="https://line.me/R/ti/p/@091pbxqz" target="_blank"
                     rel="noopener">
                     まずはLINEで相談する
@@ -264,8 +271,9 @@
 
             </section>
 
-
-            <!-- OFFER -->
+            <!-- ============================================================
+                 OFFER
+            ============================================================ -->
             <section class="section offer" id="offer">
                 <h2 class="section-title">OFFER</h2>
 
@@ -286,153 +294,124 @@
                         <li>フットバス付き</li>
                         <li>オーダーメイド施術</li>
                     </ul>
-
                 </div>
+
                 <div class="offer-body">
-                    <!-- カード画像（Figmaの画像そのまま） -->
                     <figure class="offer-card">
                         <img src="images/tiket-2¥16500.png" alt="初回限定 体験価格のご案内">
                     </figure>
 
-                    <!-- CTA（Figmaのミントボタン） -->
                     <a class="offer-btn offer-btn--mint btn-float" href="https://line.me/R/ti/p/@091pbxqz"
                         target="_blank" rel="noopener">
                         初回体験をLINEで予約する
                     </a>
                 </div>
-
             </section>
 
-            <!-- FLOW / MENU / STAFF / OFFER / ACCESS ... -->
-
-            <!-- FLOW -->
+            <!-- ============================================================
+                 FLOW
+            ============================================================ -->
             <section class="section flow" id="flow">
                 <h2 class="section-title">FLOW</h2>
 
-                <!-- タイトル（JP → EN）※Figma順 -->
                 <div class="trigger">
                     <div class="flow-what">
                         <h2 class="flow-what-jp">美心還顔（びしんかんがん）とは？</h2>
                         <h2 class="flow-what-en">What is Bishin-Kangan?</h2>
                     </div>
 
-                    <!-- 説明文（Figmaの本文ブロック） -->
                     <div class="flow-intro">
                         <p class="flow-text">
-                            “美心”とは、肌や体だけでなく、免疫やホルモン、心のしなやかさ、そして自分の本当の想いが揃った状態のこと。
+                            "美心"とは、肌や体だけでなく、免疫やホルモン、心のしなやかさ、そして自分の本当の想いが揃った状態のこと。
                         </p>
-
                         <p class="flow-text">
-                            “還顔”とは、誰にも左右されず、偽りのない表情、自然な輝き、凛とした佇まいが顔からあらわれることを指します。
+                            "還顔"とは、誰にも左右されず、偽りのない表情、自然な輝き、凛とした佇まいが顔からあらわれることを指します。
                         </p>
-
                         <p class="flow-text">
                             La vie belle.mf では、<br>
                             機械を使わないオールハンドのフェイシャルレメディ®で、お顔と心と体の声をそっと読み取り、やりたいのにできなかった気持ちや、押し込めてきた想いをやさしくほどいていきます。
                         </p>
                     </div>
 
-                    <!-- FLOW LIST -->
                     <div class="flow-list">
 
-                        <!-- 1 -->
                         <article class="flow-item">
                             <img class="flow-photo" src="images/img-flow-1.jpg" alt="セラムクレンジング">
-
-                            <!-- ✅ 右側の箱（追加） -->
                             <div class="flow-body">
                                 <h3 class="flow-step">
                                     <span class="flow-step__num">01.</span>
                                     <span class="flow-step__jp">セラムクレンジング</span>
                                 </h3>
-
                                 <p class="flow-step__en">CLEANSING</p>
-                                <p class="flow-tag">“Release &amp; Reset”</p>
-
+                                <p class="flow-tag">"Release &amp; Reset"</p>
                                 <p class="flow-desc">
                                     機械もブラシも使わない、オールハンドの極上クレンジング。美容液で洗う贅沢は、肌だけでなく心までほぐしてくれる。はじまりから深呼吸したくなる、至福の時間。
                                 </p>
                             </div>
                         </article>
 
-                        <!-- 2 -->
                         <article class="flow-item">
                             <img class="flow-photo" src="images/img-flow-2.jpg" alt="ドレナージュ＆経絡調整">
-
                             <div class="flow-body">
                                 <h3 class="flow-step">
                                     <span class="flow-step__num">02.</span>
                                     <span class="flow-step__jp">ドレナージュ＆経絡調整</span>
                                 </h3>
-
                                 <p class="flow-step__en">LYMPHATIC DRAINAGE</p>
-                                <p class="flow-tag">“Flow Freely”</p>
-
+                                <p class="flow-tag">"Flow Freely"</p>
                                 <p class="flow-desc">
                                     老廃物をやさしく流し、滞りを整えてむくみもすっきり。頬や目元がふわっと引きあがり、気持ちまで軽やかに解放される。
                                 </p>
                             </div>
                         </article>
 
-                        <!-- 3 -->
                         <article class="flow-item">
                             <img class="flow-photo" src="images/img-flow-3.jpg" alt="顔筋リフト＆感情リリース">
-
                             <div class="flow-body">
                                 <h3 class="flow-step">
                                     <span class="flow-step__num">03.</span>
                                     <span class="flow-step__jp">顔筋リフト＆感情リリース</span>
                                 </h3>
-
                                 <p class="flow-step__en">MUSCLE THERAPY</p>
-                                <p class="flow-tag">“Lift &amp; Let Go”</p>
-
+                                <p class="flow-tag">"Lift &amp; Let Go"</p>
                                 <p class="flow-desc">
                                     表情筋をほぐしながら引き上げ、こわばりや感情のしこりをゆるめる。終わったあとは、心の奥までゆるんで、鏡に映る自分が少しやさしく笑っている。
                                 </p>
                             </div>
                         </article>
 
-                        <!-- 4 -->
                         <article class="flow-item">
                             <img class="flow-photo" src="images/img-flow-4.jpg" alt="仙骨セラピー">
-
                             <div class="flow-body">
                                 <h3 class="flow-step">
                                     <span class="flow-step__num">04.</span>
                                     <span class="flow-step__jp">仙骨セラピー</span>
                                 </h3>
-
                                 <p class="flow-step__en">SACRAL THERAPY</p>
-                                <p class="flow-tag">“Flow from the Source”</p>
-
+                                <p class="flow-tag">"Flow from the Source"</p>
                                 <p class="flow-desc">
                                     仙骨にそっと手を添え、体の奥から新しい流れが生まれ、全身をやさしくめぐっていく。全身のバランスが整い、ぽかぽかと温かさが広がる。深い静けさの中で、心と体がひとつに戻る感覚。
                                 </p>
                             </div>
                         </article>
 
-                        <!-- 5 -->
                         <article class="flow-item">
                             <img class="flow-photo" src="images/img-flow-5.jpg" alt="頭蓋骨バランス">
-
                             <div class="flow-body">
                                 <h3 class="flow-step">
                                     <span class="flow-step__num">05.</span>
                                     <span class="flow-step__jp">頭蓋骨バランス</span>
                                 </h3>
-
                                 <p class="flow-step__en">SKULL THERAPY</p>
-                                <p class="flow-tag">“Clear the Mind”</p>
-
+                                <p class="flow-tag">"Clear the Mind"</p>
                                 <p class="flow-desc">
                                     頭蓋骨の歪みを緩め、循環が整った脳脊髄液が全身に満ちて頭の奥までクリアに。お顔の土台が整い、左右差のない立体的な小顔へ。そして、目を開けた瞬間──
-
                                 </p>
                             </div>
                         </article>
-                    </div>
-                </div>
+
+                    </div><!-- /.flow-list -->
+                </div><!-- /.trigger -->
 
                 <!-- 締め -->
                 <div class="flow-end">
@@ -450,40 +429,36 @@
                     <p class="flow-text">
                         一度の施術は、まるで自分リトリート。ふっと息が深くなり、思考も心もほどけていく感覚を体験できます。
                     </p>
-
                     <p class="flow-text">
                         通ううちに、自然と呼吸が深まる自分へ。気づけば、ストレスに振り回されずに過ごせる毎日が訪れ、やりたいことを軽やかに選べる未来へ。
                     </p>
-
-                    <!-- 追加：あなたへ -->
                     <h2 class="flow-end-title">
                         あなたへ<br>
                         This is Where You Return to Yourself
                     </h2>
                     <p class="flow-text">
-                        La vie belle.mf は、単なるエステではなく、自分の人生を取り戻すための場所。“素直なわたし”に還る時間を、ぜひ一度体験してみてください。
+                        La vie belle.mf は、単なるエステではなく、自分の人生を取り戻すための場所。"素直なわたし"に還る時間を、ぜひ一度体験してみてください。
                     </p>
                 </div>
             </section>
 
-            <!-- MENU -->
-            <section class="section menu" id="menu"><!-- MENU -->
+            <!-- ============================================================
+                 MENU
+            ============================================================ -->
+            <section class="section menu" id="menu">
                 <h2 class="section-title">MENU</h2>
 
-                <!-- MENU ITEM 1 -->
+                <!-- MENU ITEM 1（featured：大きいカード） -->
                 <article class="menu-item menu-item--featured">
                     <div class="menu-photo">
                         <img src="images/img-menu-1.jpg" alt="美心還顔セラピー">
                     </div>
-
                     <div class="menu-info-grid">
                         <h3 class="menu-name">美心還顔セラピー</h3>
                         <p class="menu-badge">人気 NO.1</p>
-
                         <p class="menu-sub">facial remedy®</p>
                         <p class="menu-price">120分 / 23,000円<span class="tax">(税込)</span></p>
                     </div>
-
                     <p class="menu-desc">
                         還顔セラピー＋ご自身の感情に寄り添うアロマをお選びいただき、まずはリラックス。
                         フェイスパック、首、デコルテ、までのオーダーメイド施術で、
@@ -492,7 +467,6 @@
                 </article>
 
                 <div class="menu-list">
-
 
                     <!-- MENU ITEM 2 -->
                     <article class="menu-item menu-item--small">
@@ -507,18 +481,16 @@
                     <!-- MENU ITEM 3 -->
                     <article class="menu-item menu-item--small">
                         <div class="menu-photo">
+                            <!-- loading="lazy"：画面外の画像は後から読み込む（表示速度改善） -->
                             <img src="images/img-menu-3.jpg" alt="ネックデコルテ or ハンドトリートメント イメージ" loading="lazy">
                         </div>
-
                         <div class="menu-header">
                             <h3 class="menu-name-hand">
                                 ネックデコルテor<br>ハンドトリートメント
                                 <span class="menu-sub-hand">（ヘッドマッサージ付き）</span>
                             </h3>
-
                             <p class="menu-price">30分 / 3,800円<span class="tax">(税込)</span></p>
                         </div>
-
                         <p class="menu-desc">
                             人気のオプションメニュー。お疲れに合わせて、お好きなアロマと共に日頃の緊張やストレスを緩めます。
                         </p>
@@ -529,7 +501,6 @@
                         <div class="menu-photo">
                             <img src="images/img-menu-4.jpg" alt="若石足揉み イメージ" loading="lazy">
                         </div>
-
                         <div class="menu-header">
                             <h3 class="menu-name-hand">
                                 若石足揉み<br>
@@ -539,24 +510,24 @@
                                 30分 / 3,500円<span class="tax">(税込)</span>
                             </p>
                         </div>
-
                         <p class="menu-desc">
                             全身のバランスを整えるリラクゼーションです。お顔と足先の両先から整えるのがオススメ。
                         </p>
                     </article>
 
-                </div>
+                </div><!-- /.menu-list -->
             </section>
 
-            <!-- STAFF -->
-            <section class="section staff" id="staff"><!-- STAFF -->
+            <!-- ============================================================
+                 STAFF
+            ============================================================ -->
+            <section class="section staff" id="staff">
                 <h2 class="section-title">STAFF</h2>
 
                 <div class="staff-profile">
                     <div class="staff-photo">
                         <img src="images/img-staff-mutumi.webp" alt="Mutumi（施術者）" loading="lazy">
                     </div>
-
                     <p class="staff-name">Mutumi</p>
                 </div>
 
@@ -569,23 +540,21 @@
                         美容部員として10年以上、多くの女性と向き合い、「きれいになりたい」という想いの奥に、疲れや迷い、がんばりすぎてしまう心があることに気づきました…<br>
                         肌のことだけではなく、言葉にならない疲れや緊張まで感じ取れるような施術を大切にしています。
                     </p>
-
                     <p class="staff-text">
                         昔の私は、なんとなくの不調や気持ちの重さが続いて、肌も心も「本当の調子」がわからなくなる日がありました。
                     </p>
-
                     <p class="staff-text">
-                        そんな時に出会ったのがフェイシャルレメディ®︎。お顔を整えるのに、心のクセや呼吸の浅さ、体の内側の疲れまで読み取ってくれる。顔に触れられてるだけなのに”気持ちがふっと軽くなる”そんな不思議で優しい施術に心から惹かれ、この道を選びました。
+                        そんな時に出会ったのがフェイシャルレメディ®︎。お顔を整えるのに、心のクセや呼吸の浅さ、体の内側の疲れまで読み取ってくれる。顔に触れられてるだけなのに"気持ちがふっと軽くなる"そんな不思議で優しい施術に心から惹かれ、この道を選びました。
                     </p>
-
                     <p class="staff-text">
                         La vie belle.mf は、日々がんばっている女性たちが肌も心も素直なわたしに還れる場所として生まれました。
                     </p>
                 </div>
             </section>
 
-
-            <!-- VOICE -->
+            <!-- ============================================================
+                 VOICE
+            ============================================================ -->
             <section class="section voice" id="voice">
                 <h2 class="section-title">VOICE</h2>
 
@@ -597,7 +566,6 @@
                             終わった後は気持ちまで軽くなって驚きました。
                         </p>
                     </article>
-
                     <article class="voice-item">
                         <p class="voice-meta">30代 / 自営業</p>
                         <p class="voice-text">
@@ -605,123 +573,86 @@
                             定期的に通いたいと思えるサロンです。
                         </p>
                     </article>
-
                     <article class="voice-item">
-                        <p class="voice-meta">30代 / 自営業</p>
+                        <p class="voice-meta">30代 / 主婦</p>
                         <p class="voice-text">
-                            ただのエステではなく、心まで整う感じがしました。
-                            定期的に通いたいと思えるサロンです。
+                            施術の間ずっとリラックスできて、終わった後は顔がひとまわり小さく見えました。また来たいです。
                         </p>
                     </article>
                 </div>
             </section>
 
-
-            <!-- Q&A -->
-            <section class="section qa" id="qa"><!-- Q&A -->
+            <!-- ============================================================
+                 Q&A
+            ============================================================ -->
+            <section class="section qa" id="qa">
                 <h2 class="section-title">Q&amp;A</h2>
 
                 <div class="qa-list">
 
-                    <!-- Q1 -->
-                    <details class="qa-item" open><!-- Q1 -->
-                        <summary class="qa-q">
-                            メイクはしないで行った方が良いですか？
-                        </summary>
+                    <details class="qa-item" open>
+                        <summary class="qa-q">メイクはしないで行った方が良いですか？</summary>
                         <div class="qa-a">
-                            <p>
-                                クレンジングから行いますので、メイクされたままご来店いただいてかまいません。
-                            </p>
+                            <p>クレンジングから行いますので、メイクされたままご来店いただいてかまいません。</p>
                         </div>
                     </details>
 
-                    <!-- Q2 -->
-                    <details class="qa-item"><!-- Q2 -->
-                        <summary class="qa-q">
-                            着替える必要はありますか？
-                        </summary>
+                    <details class="qa-item">
+                        <summary class="qa-q">着替える必要はありますか？</summary>
                         <div class="qa-a">
-                            <p>
-                                施術の効果をより高めるために、身体を締め付けるものはすべて外していただき、ガウンに着替えていただきます。
-                            </p>
+                            <p>施術の効果をより高めるために、身体を締め付けるものはすべて外していただき、ガウンに着替えていただきます。</p>
                         </div>
                     </details>
 
-                    <!-- Q3 -->
-                    <details class="qa-item"><!-- Q3 -->
-                        <summary class="qa-q">
-                            化粧品にアレルギーがあるのですが…
-                        </summary>
+                    <details class="qa-item">
+                        <summary class="qa-q">化粧品にアレルギーがあるのですが…</summary>
                         <div class="qa-a">
-                            <p>
-                                厳選した成分を使用していますが、アレルギーなどありましたら事前にお知らせください。
-                            </p>
+                            <p>厳選した成分を使用していますが、アレルギーなどありましたら事前にお知らせください。</p>
                         </div>
                     </details>
 
-                    <!-- Q4 -->
-                    <details class="qa-item"><!-- Q4 -->
-                        <summary class="qa-q">
-                            施術のコースは選べますか？
-                        </summary>
+                    <details class="qa-item">
+                        <summary class="qa-q">施術のコースは選べますか？</summary>
                         <div class="qa-a">
-                            <p>
-                                美心還顔セラピーはオールハンドのフェイシャルレメディ®トリートメントです。その日のあなたにぴったりの内容をオーダーメイドで組み立てます。
-                            </p>
+                            <p>美心還顔セラピーはオールハンドのフェイシャルレメディ®トリートメントです。その日のあなたにぴったりの内容をオーダーメイドで組み立てます。</p>
                         </div>
                     </details>
 
-                    <!-- Q5 -->
-                    <details class="qa-item"><!-- Q5 -->
-                        <summary class="qa-q">
-                            施術時間以外に、どれくらい時間を見ておけば良いですか？
-                        </summary>
+                    <details class="qa-item">
+                        <summary class="qa-q">施術時間以外に、どれくらい時間を見ておけば良いですか？</summary>
                         <div class="qa-a">
-                            <p>
-                                トリートメント後、アフタードリンクをご用意しています。初回は施術時間＋45分程度、2回目以降は施術時間＋30分程度を目安にしてください。
-                            </p>
+                            <p>トリートメント後、アフタードリンクをご用意しています。初回は施術時間＋45分程度、2回目以降は施術時間＋30分程度を目安にしてください。</p>
                         </div>
                     </details>
 
-                    <!-- Q6 -->
-                    <details class="qa-item"><!-- Q6 -->
-                        <summary class="qa-q">
-                            メイク用品は置いてありますか？
-                        </summary>
+                    <details class="qa-item">
+                        <summary class="qa-q">メイク用品は置いてありますか？</summary>
                         <div class="qa-a">
-                            <p>
-                                メイク用品のご用意はありません。必要な方はご持参ください。額や耳までトリートメントするため、多少生え際に成分が残る場合があります。
-                            </p>
+                            <p>メイク用品のご用意はありません。必要な方はご持参ください。額や耳までトリートメントするため、多少生え際に成分が残る場合があります。</p>
                         </div>
                     </details>
 
-                    <!-- Q7 -->
-                    <details class="qa-item"><!-- Q7 -->
-                        <summary class="qa-q">
-                            支払いにクレジットカードは使えますか？
-                        </summary>
+                    <details class="qa-item">
+                        <summary class="qa-q">支払いにクレジットカードは使えますか？</summary>
                         <div class="qa-a">
-                            <p>
-                                お支払いは現金・クレジットカード・コード決済がご利用いただけます。ご予約をキャンセルされる場合は、3日前までにご連絡ください。<br>
-                                前日：施術料金の50％／当日：100％を頂戴いたします。
-                            </p>
+                            <p>お支払いは現金・クレジットカード・コード決済がご利用いただけます。ご予約をキャンセルされる場合は、3日前までにご連絡ください。<br>
+                                前日：施術料金の50％／当日：100％を頂戴いたします。</p>
                         </div>
                     </details>
 
                 </div>
-
             </section>
 
-            <!-- ACCESS -->
+            <!-- ============================================================
+                 ACCESS
+            ============================================================ -->
             <section class="section access" id="access">
                 <h2 class="section-title">ACCESS</h2>
 
-                <!-- 写真（Figmaの上の大きい画像） -->
                 <div class="access-photo">
                     <img src="images/img-access.jpg" alt="サロンのイメージ" loading="lazy">
                 </div>
 
-                <!-- 店名＋TEL（太字） -->
                 <div class="access-head">
                     <p class="access-name">La vie belle.mf（ラヴィベル）</p>
                     <p class="access-telrow">Tel：<a class="access-tel" href="tel:09062172432">090-6217-2432</a></p>
@@ -729,14 +660,12 @@
 
                 <div class="access-sep"></div>
 
-                <!-- 住所など -->
                 <p class="access-text">
                     〒004-0882　札幌市清田区平岡公園東6丁目<br>
                     新札幌駅よりバスで9分<br>
                     新札幌駅まで送迎も承っております
                 </p>
 
-                <!-- Google Maps（下線＋丸矢印） -->
                 <div class="map btn-float">
                     <a class="access-map" href="https://www.google.com/maps/search/?api=1&query=札幌市清田区平岡公園東6丁目"
                         target="_blank" rel="noopener">
@@ -746,15 +675,13 @@
 
                 <div class="access-sep"></div>
 
-                <!-- 営業時間 -->
                 <div class="access-block">
                     <p class="access-key">営業時間</p>
-                    <p class="access-val">月〜土・日・祝　10:00~19:00</p>
+                    <p class="access-val">月〜土・日・祝　10:00〜19:00</p>
                 </div>
 
                 <div class="access-sep"></div>
 
-                <!-- 定休日 -->
                 <div class="access-block">
                     <p class="access-key">定休日</p>
                     <p class="access-val">火曜日・水曜日</p>
@@ -762,14 +689,12 @@
 
                 <div class="access-sep"></div>
 
-                <!-- 予約について（ベージュカード） -->
                 <div class="access-card">
                     <p class="access-card__title">ご予約について</p>
                     <p class="access-card__text">
                         ご予約・お問い合わせは公式LINEからお願いします。<br>
                         1日営業日以内にご返信致しますので、お気軽にお問い合わせください。
                     </p>
-
                     <a class="access-card__btn btn-float" href="https://line.me/R/ti/p/@091pbxqz" target="_blank"
                         rel="noopener">
                         ご予約・お問い合わせはこちら
@@ -777,7 +702,9 @@
                 </div>
             </section>
 
-            <!-- FINAL CTA -->
+            <!-- ============================================================
+                 FINAL CTA
+            ============================================================ -->
             <section class="section final-cta" id="cta">
                 <div class="final-cta__body">
                     <h2 class="final-cta__title">頑張る毎日に、<br>"わたしに還る"時間を</h2>
@@ -786,7 +713,6 @@
                         そんなときこそ、<br>
                         自分を後回しにしない時間を。
                     </p>
-
                     <a class="access-card__btn btn-float" href="https://line.me/R/ti/p/@091pbxqz" target="_blank"
                         rel="noopener">
                         初回体験をLINEで予約する
@@ -797,21 +723,20 @@
 
         </main>
 
-
-
-
+        <!-- ============================================================
+             FOOTER
+        ============================================================ -->
         <footer class="site-footer" id="footer">
             <div class="footer-inner">
 
-                <!-- ロゴ -->
                 <div class="footer-logo">
-                    <a href="#top" aria-label="トップへ戻る">
+                    <!-- js-scroll-top クラスを付けてJSでスムーズスクロール -->
+                    <a href="#top" class="js-scroll-top" aria-label="トップへ戻る">
                         <img src="images/logo.png" alt="La vie belle.mf">
                     </a>
                 </div>
 
-                <!-- フッターナビ -->
-                <nav class="footer-nav">
+                <nav class="footer-nav" aria-label="フッターナビ">
                     <ul class="footer-nav-col">
                         <li><a href="#concept">CONCEPT</a></li>
                         <li><a href="#flow">FLOW</a></li>
@@ -825,33 +750,33 @@
                     </ul>
                 </nav>
 
-                <!-- SNS -->
                 <div class="footer-sns">
                     <a href="https://www.instagram.com/laviebelle_sapporo?igsh=MTdjZzAxMHJreGVjdA%3D%3D&utm_source=qr"
-                        target="_blank" aria-label="Instagram">
+                        target="_blank" rel="noopener" aria-label="Instagram">
                         <img src="images/icon-instagram.svg" alt="">
                     </a>
-                    <a href="https://line.me/R/ti/p/@091pbxqz" target="_blank" aria-label="LINE">
-                        <img src="images/icon-line.svg " alt="">
+                    <!-- ★修正：icon-line.svg の後ろに半角スペースがあったのを削除 -->
+                    <a href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener" aria-label="LINE">
+                        <img src="images/icon-line.svg" alt="">
                     </a>
                 </div>
 
-                <!-- コピーライト -->
                 <p class="footer-copy">© La vie belle.mf</p>
 
             </div>
         </footer>
 
-    </div>
+    </div><!-- /.page -->
 
-    <!-- ハンバーガーで開く：オーバーレイ + 右寄せパネル -->
+    <!-- ============================================================
+         ハンバーガーメニュー（オーバーレイ）
+         ※ .page の外に置くことでz-indexが効きやすくなる
+    ============================================================ -->
     <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
         <div class="menu-panel" role="dialog" aria-modal="true" aria-label="サイトメニュー">
 
-            <!-- 右上の×（閉じる） -->
             <button class="menu-close" type="button" aria-label="メニューを閉じる">×</button>
 
-            <!-- メニュー（縦積み・中央） -->
             <nav class="menu-nav" aria-label="サイトメニュー">
                 <a href="#concept" class="menu-link">CONCEPT</a>
                 <a href="#flow" class="menu-link">FLOW</a>
@@ -863,30 +788,34 @@
                 <a href="about.html" class="menu-link">ABOUT</a>
             </nav>
 
-            <!-- SNS（下の中央） -->
             <div class="menu-sns" aria-label="SNSリンク">
                 <a href="https://www.instagram.com/laviebelle_sapporo?igsh=MTdjZzAxMHJreGVjdA%3D%3D&utm_source=qr"
-                    aria-label="Instagram">
-                    <img src="images/icon-instagram.svg" alt="instagram">
+                    target="_blank" rel="noopener" aria-label="Instagram">
+                    <img src="images/icon-instagram.svg" alt="">
                 </a>
                 <a href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener" aria-label="LINE">
-                    <img src="images/icon-line.svg" alt="LINE">
+                    <img src="images/icon-line.svg" alt="">
                 </a>
             </div>
 
         </div>
     </div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-    <script src="main.js"></script>
-
+    <!-- 固定予約ボタン（画面下部に常時表示） -->
     <div class="fixed-reserve">
         <a href="https://line.me/R/ti/p/@091pbxqz" class="fixed-reserve-btn">
             初回体験をLINEで予約する
         </a>
     </div>
+
+    <!-- ============================================================
+         JS（bodyの閉じタグ直前に置くのが正しい配置）
+         GSAPはCDNから、main.jsは自分で書いたファイル
+    ============================================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+
 </body>
 
 </html>

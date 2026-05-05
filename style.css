@@ -1107,6 +1107,13 @@ html.is-menu-open {
   letter-spacing: 0.18em;
   text-decoration: none;
   color: #6a6a6a;
+  /* ヘッダーと同じ：色変化をなめらかにする */
+  transition: color 0.2s ease;
+}
+
+/* ホバー：ヘッダーと同じミントグリーンに変化 */
+.footer-nav-col a:hover {
+  color: var(--title-mint); /* #82CBBE */
 }
 
 .footer-sns {

@@ -35,18 +35,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    const scrollTopLink = document.querySelector('.js-scroll-top');
+    // querySelectorAll で「js-scroll-top クラスを持つ全要素」を取得
+    // querySelector（複数形でない方）は最初の1つしか取れないため、
+    // ヘッダー・フッター・ハンバーガーの3箇所すべてに対応するには All が必要
+    const scrollTopLinks = document.querySelectorAll('.js-scroll-top');
 
-    if (!scrollTopLink) return;
-
-    scrollTopLink.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        const target = document.querySelector('#top');
-        if (!target) return;
-
-        target.scrollIntoView({
-            behavior: 'smooth'
+    scrollTopLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector('#top');
+            if (!target) return;
+            target.scrollIntoView({ behavior: 'smooth' });
         });
     });
 });

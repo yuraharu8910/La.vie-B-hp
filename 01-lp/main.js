@@ -57,18 +57,20 @@ document.addEventListener("DOMContentLoaded", () => {
        ※ html { scroll-behavior: smooth; } でも可能だが、
           Safariの古いバージョンに対応するためJSでも実装している
     ------------------------------------------------------- */
-    const scrollTopLink = document.querySelector(".js-scroll-top");
+    // querySelectorAll で「js-scroll-top クラスを持つ全要素」を取得
+    // querySelector（複数形でない方）は最初の1つしか取れないため、
+    // ヘッダー・フッター・ハンバーガーの3箇所すべてに対応するには All が必要
+    const scrollTopLinks = document.querySelectorAll(".js-scroll-top");
 
-    if (scrollTopLink) {
-        scrollTopLink.addEventListener("click", (e) => {
+    scrollTopLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
             e.preventDefault(); // デフォルトのジャンプ動作をキャンセル
-
             const target = document.querySelector("#top");
             if (target) {
                 target.scrollIntoView({ behavior: "smooth" });
             }
         });
-    }
+    });
 
 }); // DOMContentLoaded ここまで
 
