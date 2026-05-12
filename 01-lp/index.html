@@ -9,15 +9,19 @@
     <title>La vie belle.mf｜美心還顔フェイシャルレメディ®認定サロン（札幌）</title>
     <meta name="description"
         content="頑張っているあなたへ、極上の癒しを。東洋医学・心理学・脳科学の知恵をもとに、肌と心の奥に触れるオールハンドのフェイシャルレメディ®認定サロン La vie belle.mf（札幌）。" />
-    <meta name="robots" content="index, follow" />
-    <!-- ★本番公開時は実際のURLに変更してください -->
-    <link rel="canonical" href="https://laviebelle-mf.com/" />
+    <!-- ★本番公開時は下の2行を入れ替えてください -->
+    <!-- 本番前：GitHub Pages上ではインデックスさせない -->
+    <meta name="robots" content="noindex, nofollow" />
+    <!-- 本番後：以下を有効にして上のnoindexを削除 -->
+    <!-- <meta name="robots" content="index, follow" /> -->
+    <!-- <link rel="canonical" href="https://laviebelle-mf.com/" /> -->
 
     <!-- OGP（SNSでシェアされた時の表示） -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="La vie belle.mf｜美心還顔フェイシャルレメディ®認定サロン（札幌）" />
     <meta property="og:description" content="頑張っているあなたへ、極上の癒しを。肌と心を"わたしらしさ"へ還す時間。" />
     <meta property="og:url" content="https://laviebelle-mf.com/" />
+    <!-- OGP画像は絶対パス必須（SNSがアクセスするため）。本番ドメインのままでOK -->
     <meta property="og:image" content="https://laviebelle-mf.com/images/ogp.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -32,6 +36,42 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
         rel="stylesheet">
+
+    <!-- 構造化データ（LocalBusiness）
+         Googleにお店の情報を正確に伝えるJSON-LD形式のマークアップ。
+         Googleマップや検索結果のリッチスニペット表示に繋がります。
+         ★本番公開時：urlとtelephone・addressを実際の情報に合わせて確認してください -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BeautySalon",
+      "name": "La vie belle.mf",
+      "alternateName": "ラヴィベル",
+      "description": "東洋医学・心理学・脳科学の知恵をもとにしたオールハンドのフェイシャルレメディ®認定サロン（札幌・清田区）",
+      "url": "https://laviebelle-mf.com/",
+      "telephone": "090-6217-2432",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "平岡公園東6丁目",
+        "addressLocality": "清田区",
+        "addressRegion": "北海道",
+        "postalCode": "004-0882",
+        "addressCountry": "JP"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "10:00",
+          "closes": "19:00"
+        }
+      ],
+      "priceRange": "¥¥¥",
+      "sameAs": [
+        "https://www.instagram.com/laviebelle_sapporo"
+      ]
+    }
+    </script>
 
     <link rel="stylesheet" href="style.css" />
 </head>
@@ -48,6 +88,7 @@
 
                 <!-- PC用：ナビ（中央）※SPでは非表示 -->
                 <nav class="pc-nav" aria-label="グローバルナビ">
+                    <!-- TOPへのリンク：クリックでページ先頭（#top）へスムーズスクロール -->
                     <a href="#top" class="pc-nav__link js-scroll-top">TOP</a>
                     <a href="#concept" class="pc-nav__link">CONCEPT</a>
                     <a href="#flow" class="pc-nav__link">FLOW</a>
@@ -207,7 +248,7 @@
                         <p>
                             東洋医学・心理学・脳科学の知恵をもとに、<br>
                             オールハンドの繊細な手技で、緊張や強張りを<br>
-                            やさしく解いて行きます。
+                            やさしく解いていきます。
                         </p>
                         <p>
                             ただお顔を整えるだけではなく、<br>
@@ -238,7 +279,7 @@
                 <div class="reason-list">
                     <article class="reason-item">
                         <div class="reason-photo">
-                            <img src="images/img-menu-1.jpg" alt="施術イメージ">
+                            <img src="images/img-menu-1.jpg" alt="オールハンドのフェイシャルレメディ施術の様子（札幌）">
                         </div>
                         <p class="reason-num">01.</p>
                         <h3 class="reason-title">肌だけでなく、心と身体にも<br>寄り添う施術</h3>
@@ -299,7 +340,8 @@
 
                 <div class="offer-body">
                     <figure class="offer-card">
-                        <img src="images/tiket-2¥16500.png" alt="初回限定 体験価格のご案内">
+                        <!-- ★ファイル名を「tiket-2¥16500.png」→「ticket-16500.png」にリネームしてください -->
+                        <img src="images/ticket-16500.png" alt="初回限定 体験価格のご案内 通常23,000円が初回16,500円">
                     </figure>
 
                     <a class="offer-btn offer-btn--mint btn-float" href="https://line.me/R/ti/p/@091pbxqz"
@@ -317,8 +359,8 @@
 
                 <div class="trigger">
                     <div class="flow-what">
-                        <h2 class="flow-what-jp">美心還顔（びしんかんがん）とは？</h2>
-                        <h2 class="flow-what-en">What is Bishin-Kangan?</h2>
+                        <h3 class="flow-what-jp">美心還顔（びしんかんがん）とは？</h3>
+                        <p class="flow-what-en">What is Bishin-Kangan?</p>
                     </div>
 
                     <div class="flow-intro">
@@ -533,9 +575,9 @@
                 </div>
 
                 <div class="staff-body">
-                    <h2 class="staff-lead">
+                    <h3 class="staff-lead">
                         初めての方でも、安心してお越しいただけるように
-                    </h2>
+                    </h3>
 
                     <p class="staff-text">
                         美容部員として10年以上、多くの女性と向き合い、「きれいになりたい」という想いの奥に、疲れや迷い、がんばりすぎてしまう心があることに気づきました…<br>
@@ -561,21 +603,25 @@
 
                 <div class="voice-list">
                     <article class="voice-item">
-                        <p class="voice-meta">40代 / 会社員</p>
+                        <!-- ★ニックネームは実際のお客様の許可を得た上で記載してください -->
+                        <p class="voice-meta">40代 / 会社員 Yさん</p>
+                        <p class="voice-course">美心還顔セラピー 体験後</p>
                         <p class="voice-text">
                             施術後、顔がすっきりして目が開きやすくなりました。
                             終わった後は気持ちまで軽くなって驚きました。
                         </p>
                     </article>
                     <article class="voice-item">
-                        <p class="voice-meta">30代 / 自営業</p>
+                        <p class="voice-meta">30代 / 自営業 Kさん</p>
+                        <p class="voice-course">美心還顔セラピー 体験後</p>
                         <p class="voice-text">
                             ただのエステではなく、心まで整う感じがしました。
                             定期的に通いたいと思えるサロンです。
                         </p>
                     </article>
                     <article class="voice-item">
-                        <p class="voice-meta">30代 / 主婦</p>
+                        <p class="voice-meta">30代 / 主婦 Mさん</p>
+                        <p class="voice-course">還顔セラピー 体験後</p>
                         <p class="voice-text">
                             施術の間ずっとリラックスできて、終わった後は顔がひとまわり小さく見えました。また来たいです。
                         </p>
@@ -651,7 +697,7 @@
                 <h2 class="section-title">ACCESS</h2>
 
                 <div class="access-photo">
-                    <img src="images/img-access.jpg" alt="サロンのイメージ" loading="lazy">
+                    <img src="images/img-access.jpg" alt="La vie belle.mf サロン内観（清田区平岡）" loading="lazy">
                 </div>
 
                 <div class="access-head">
@@ -664,7 +710,8 @@
                 <p class="access-text">
                     〒004-0882　札幌市清田区平岡公園東6丁目<br>
                     新札幌駅よりバスで9分<br>
-                    新札幌駅まで送迎も承っております
+                    <!-- 送迎サービスは差別化になる情報なので強調 -->
+                    <span class="access-shuttle">🚗 新札幌駅から送迎あり（要予約）</span>
                 </p>
 
                 <div class="map btn-float">
@@ -739,6 +786,7 @@
 
                 <nav class="footer-nav" aria-label="フッターナビ">
                     <ul class="footer-nav-col">
+                        <!-- TOPへのリンク：フッターからページ先頭に戻る -->
                         <li><a href="#top" class="js-scroll-top">TOP</a></li>
                         <li><a href="#concept">CONCEPT</a></li>
                         <li><a href="#flow">FLOW</a></li>
@@ -747,8 +795,8 @@
                     <ul class="footer-nav-col">
                         <li><a href="#staff">STAFF</a></li>
                         <li><a href="#offer">OFFER</a></li>
-                        <li><a href="#qa">Q&amp;A</a></li>
                         <li><a href="#access">ACCESS</a></li>
+                        <li><a href="#qa">Q&amp;A</a></li>
                     </ul>
                 </nav>
 
@@ -780,6 +828,7 @@
             <button class="menu-close" type="button" aria-label="メニューを閉じる">×</button>
 
             <nav class="menu-nav" aria-label="サイトメニュー">
+                <!-- TOPへのリンク：メニューを閉じた後にトップへスクロール -->
                 <a href="#top" class="menu-link js-scroll-top">TOP</a>
                 <a href="#concept" class="menu-link">CONCEPT</a>
                 <a href="#flow" class="menu-link">FLOW</a>

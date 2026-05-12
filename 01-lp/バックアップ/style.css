@@ -50,11 +50,13 @@ body {
 
 /* 390pxの“実画面” */
 .page {
+    /* ★修正：margin:0 auto → 0 に（autoは余白が出る場合がある）
+       overflow-x:hidden で横スクロール防止 */
     width: 100%;
-    max-width: 390px;
-    margin: 0 auto;
+    margin: 0;
     background: var(--bg);
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .footer-sns img,
@@ -71,22 +73,25 @@ body {
 .site-header {
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: var(--page);
+    left: 0;
+    /* ★修正：画面幅いっぱいに広げる（SPどの機種でもはみ出さないように） */
+    width: 100%;
     height: var(--header-h);
     z-index: 200;
-
-    /* 元画像は「背景なし」に見えるので透明 */
     background: transparent;
     border: none;
 }
 
 .header-inner {
     position: relative;
-    /* ハンバーガー絶対配置用 */
+    /* ★修正：display:flexを明示し、ハンバーガーを右端に寄せる */
+    display: flex;
     justify-content: flex-end;
-    padding: 14px 14px 0;
+    align-items: flex-start;
+    /* ★修正：左右パディングを0にして、ハンバーガーの位置をCSSで制御 */
+    padding: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /* SPはPC用要素を隠す（あなたの仕様維持） */
@@ -96,13 +101,12 @@ body {
     display: none;
 }
 
-/* ハンバーガー（SP：右上固定） */
-
+/* ハンバーガー（SP：右上） */
+/* ★修正：position:absoluteをやめ、flexの最後尾として自然に右端に配置
+   → どの画面幅でもコンテンツと同じ幅の中に収まる */
 .hamburger {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    margin: 0;
+    /* position: absolute 削除 → flexアイテムとして右端に配置 */
+    margin: 14px 16px 0 auto; /* 上14px、右16px の余白 */
     width: 32px;
     height: 24px;
     border: none;
@@ -112,6 +116,7 @@ body {
     justify-content: space-between;
     padding: 0;
     cursor: pointer;
+    flex-shrink: 0; /* 縮まないようにする */
 }
 
 .hamburger__line {
@@ -129,6 +134,7 @@ body {
 
 .hero {
     position: relative;
+    width: 100%;
     height: 92vh;
     min-height: 620px;
     overflow: hidden;
@@ -160,10 +166,14 @@ body {
 .hero-title {
     position: absolute;
     top: 110px;
-    left: 40%;
+    /* ★修正：left:40% → left:50% に変更
+       translateX(-50%) と組み合わせると「50% - 50% = 中央」になる
+       40%では少し左にずれてしまう */
+    left: 50%;
     transform: translateX(-50%);
-    width: 255px;
-    height: 70px;
+    width: 90%;          /* ★修正：固定255px → 90%にして画面幅に追従 */
+    max-width: 300px;    /* 広がりすぎ防止 */
+    height: auto;        /* ★修正：固定70px → auto（文字が収まるように） */
     margin: 0;
     text-align: center;
     font-family: var(--serif);
@@ -185,7 +195,7 @@ body {
   HEROとCONCEPTの間のロゴ
 ========================= */
 .between-logo {
-    width: 390px;
+    width: 100%;
     margin: 0 auto;
     margin-top: 100px;
     padding: 80px 0 80px;
@@ -1618,9 +1628,10 @@ p:last-child {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 12px 20px;
+    padding: 0;            /* 左右パディングを0に → ボタンが画面端まで広がる */
     background: #BFE0D9;
     z-index: 9999;
+    box-sizing: border-box;
 }
 
 .fixed-reserve-btn {
@@ -1629,7 +1640,7 @@ p:last-child {
     justify-content: center;
 
     width: 100%;
-    height: 46px;
+    height: 58px;          /* タップ領域を少し広げる */
 
     background: #BFE0D9;
     color: #6a6a6a;
@@ -1640,7 +1651,10 @@ p:last-child {
 
     text-decoration: none;
 
-    border-radius: 14px;
+    border-radius: 0;      /* 角丸なし → 画面端にピッタリ密着 */
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.2s ease;
 }
 
 /* =========================
@@ -3364,17 +3378,14 @@ html.is-menu-open {
 
 
     /* =========================
-   固定予約ボタン（SP）
+   固定予約ボタン（PC用上書き：768px以上）
+   ★修正：SP用設定をPC用に変更。SPのベース定義（1616行目）を汚さない
 ========================= */
 
     .fixed-reserve {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding: 12px 20px;
-        background: #BFE0D9;
-        z-index: 9999;
+        /* PCでは左右にpadding入れてボタンを少し細く */
+        padding: 8px 20px 12px;
+        /* ★ width/left/positionはSPから継承（上書きなし） */
     }
 
     .fixed-reserve-btn {
@@ -3382,8 +3393,11 @@ html.is-menu-open {
         align-items: center;
         justify-content: center;
 
+        /* PCではmax-widthで幅を制限 */
+        max-width: 440px;
+        margin: 0 auto; /* 中央寄せ */
         width: 100%;
-        height: 36px;
+        height: 50px;
 
         background: #BFE0D9;
         color: #6a6a6a;
@@ -3394,6 +3408,7 @@ html.is-menu-open {
 
         text-decoration: none;
 
+        /* PCでは少し角丸 */
         border-radius: 14px;
     }
 
