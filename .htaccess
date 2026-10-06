@@ -1,0 +1,13 @@
+# ===================================
+# /insta 短縮URL → LP（UTM付き）への転送設定
+# ===================================
+
+# RewriteEngine = URLの書き換え機能をONにする（この1行は必須）
+RewriteEngine On
+
+# 「/insta」または「/insta/」にアクセスされたら、UTM付きのLPへ転送する
+#   ^insta/?$  = アドレスが「insta」または「insta/」にちょうど一致、という意味
+RewriteRule ^insta/?$ /01-lp/?utm_source=instagram&utm_medium=profile&utm_campaign=lp [R=302,L]
+
+#   [R=302] = 一時的な転送（後でUTMや行き先を変えるかもしれないので302が安全）
+#   [L]     = この行で書き換え処理を終了する（Lastの意味）

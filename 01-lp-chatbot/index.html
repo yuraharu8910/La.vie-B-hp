@@ -2,7 +2,37 @@
 <html lang="ja">
 
 <head>
-    <!-- [DEMO] Google Tag Manager はデモ版では停止中（本番の計測データを汚さないため）。本番反映時に元に戻す -->
+    <!-- ========== Google Tag Manager（計測タグの司令塔）==========
+         GA4・Clarityなどの計測タグは、すべてこのGTM経由で配信します。
+         【読み込む条件】次のどちらかのときだけGTMを読み込みます。
+           1. 本番ドメイン（laviebelle-mf.com）で開かれたとき
+           2. GTMの「プレビュー」で開かれたとき（URLに gtm_debug が付く）
+         デモ用URL（GitHub Pagesなど）を普通に開いたときは読み込まないので、
+         本番の計測データにテストのアクセスが混ざりません。
+         本番に反映するときも、ここは書き換え不要です。 -->
+    <script>
+        (function (w, d, s, l, i) {
+            // 本番ドメインかどうか（www付きも含める）
+            var isProduction = /(^|\.)laviebelle-mf\.com$/.test(w.location.hostname);
+            // GTMのプレビュー（動作確認モード）かどうか
+            var isPreview = /[?&]gtm_debug=/.test(w.location.search);
+            // どちらでもなければ、ここで終了（GTMを読み込まない）
+            if (!isProduction && !isPreview) { return; }
+
+            // dataLayer＝GTMへデータを渡すための配列。なければ空で用意する
+            w[l] = w[l] || [];
+            // 「GTMの読み込みを開始した」という記録を最初に入れる
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            // GTM本体を非同期（ページの表示を止めない形）で読み込む
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MJS8PXR3');
+    </script>
+    <!-- End Google Tag Manager -->
 
     <meta charset="UTF-8" />
     <meta name="robots" content="noindex, nofollow" /><!-- [DEMO] デモ版は検索に出さない -->
@@ -78,7 +108,11 @@
 </head>
 
 <body>
-    <!-- [DEMO] GTM noscript 停止中 -->
+    <!-- Google Tag Manager (noscript)
+         JavaScriptが無効な環境向けの予備。画面には表示されません。 -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJS8PXR3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <!-- ページ全体を包む箱（390px固定 → PCで拡張） -->
     <div class="page">
@@ -110,7 +144,7 @@
                         target="_blank" rel="noopener" aria-label="Instagram">
                         <img src="images/icon-instagram.svg" alt="">
                     </a>
-                    <a class="header-sns__link" href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener"
+                    <a class="header-sns__link" data-cta="header_icon" href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener"
                         aria-label="LINE">
                         <img src="images/icon-line.svg" alt="">
                     </a>
@@ -165,7 +199,7 @@
                         <p>北海道初上陸。<br>オールハンドで"素直なわたし"に還る時間を。</p>
                     </div>
 
-                    <a class="access-card__btn btn-float" href="https://line.me/R/ti/p/@091pbxqz" target="_blank"
+                    <a class="access-card__btn btn-float" data-cta="about" href="https://line.me/R/ti/p/@091pbxqz" target="_blank"
                         rel="noopener">
                         初回体験をLINEで予約する
                     </a>
@@ -222,7 +256,7 @@
                     </ul>
 
                     <div class="cta-group">
-                        <a class="access-card__btn btn-float" href="https://line.me/R/ti/p/@091pbxqz" target="_blank"
+                        <a class="access-card__btn btn-float" data-cta="result" href="https://line.me/R/ti/p/@091pbxqz" target="_blank"
                             rel="noopener">
                             空き状況をLINEで確認する
                         </a>
@@ -308,7 +342,7 @@
                     </a>
                 </div>
 
-                <a class="access-card__btn btn-float" href="https://line.me/R/ti/p/@091pbxqz" target="_blank"
+                <a class="access-card__btn btn-float" data-cta="reason" href="https://line.me/R/ti/p/@091pbxqz" target="_blank"
                     rel="noopener">
                     まずはLINEで相談する
                 </a>
@@ -346,7 +380,7 @@
                         <img src="images/ticket-16500.png" alt="初回限定 体験価格のご案内 通常23,000円が初回16,500円">
                     </figure>
 
-                    <a class="offer-btn offer-btn--mint btn-float" href="https://line.me/R/ti/p/@091pbxqz"
+                    <a class="offer-btn offer-btn--mint btn-float" data-cta="offer" href="https://line.me/R/ti/p/@091pbxqz"
                         target="_blank" rel="noopener">
                         初回体験をLINEで予約する
                     </a>
@@ -704,7 +738,7 @@
 
                 <div class="access-head">
                     <p class="access-name">La vie belle.mf（ラヴィベル）</p>
-                    <p class="access-telrow">Tel：<a class="access-tel" href="tel:09062172432">090-6217-2432</a></p>
+                    <p class="access-telrow">Tel：<a class="access-tel" data-cta="access_tel" href="tel:09062172432">090-6217-2432</a></p>
                 </div>
 
                 <div class="access-sep"></div>
@@ -745,7 +779,7 @@
                         ご予約・お問い合わせは公式LINEからお願いします。<br>
                         1日営業日以内にご返信致しますので、お気軽にお問い合わせください。
                     </p>
-                    <a class="access-card__btn btn-float" href="https://line.me/R/ti/p/@091pbxqz" target="_blank"
+                    <a class="access-card__btn btn-float" data-cta="access" href="https://line.me/R/ti/p/@091pbxqz" target="_blank"
                         rel="noopener">
                         ご予約・お問い合わせはこちら
                     </a>
@@ -763,7 +797,7 @@
                         そんなときこそ、<br>
                         自分を後回しにしない時間を。
                     </p>
-                    <a class="access-card__btn btn-float" href="https://line.me/R/ti/p/@091pbxqz" target="_blank"
+                    <a class="access-card__btn btn-float" data-cta="final" href="https://line.me/R/ti/p/@091pbxqz" target="_blank"
                         rel="noopener">
                         初回体験をLINEで予約する
                     </a>
@@ -808,7 +842,7 @@
                         <img src="images/icon-instagram.svg" alt="">
                     </a>
                     <!-- ★修正：icon-line.svg の後ろに半角スペースがあったのを削除 -->
-                    <a href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener" aria-label="LINE">
+                    <a data-cta="footer_icon" href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener" aria-label="LINE">
                         <img src="images/icon-line.svg" alt="">
                     </a>
                 </div>
@@ -847,7 +881,7 @@
                     target="_blank" rel="noopener" aria-label="Instagram">
                     <img src="images/icon-instagram.svg" alt="">
                 </a>
-                <a href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener" aria-label="LINE">
+                <a data-cta="menu_icon" href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener" aria-label="LINE">
                     <img src="images/icon-line.svg" alt="">
                 </a>
             </div>
@@ -857,7 +891,7 @@
 
     <!-- 固定予約ボタン（画面下部に常時表示） -->
     <div class="fixed-reserve">
-        <a href="https://line.me/R/ti/p/@091pbxqz" class="fixed-reserve-btn">
+        <a data-cta="fixed" href="https://line.me/R/ti/p/@091pbxqz" class="fixed-reserve-btn">
             初回体験をLINEで予約する
         </a>
     </div>

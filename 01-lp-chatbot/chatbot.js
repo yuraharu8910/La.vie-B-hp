@@ -167,6 +167,8 @@
         a.target = "_blank";
         a.rel = "noopener";
         a.textContent = "LINEで予約・相談する";
+        // 計測用の目印。GTMが「チャットボット内のLINEボタン」だと見分けるために使う
+        a.setAttribute("data-cta", "chatbot");
         a.addEventListener("click", () => pushEvent("chat_line_click")); // 予約への流れを計測
         log.appendChild(a);
         log.scrollTop = log.scrollHeight;

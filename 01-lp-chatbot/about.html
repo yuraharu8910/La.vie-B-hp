@@ -2,15 +2,36 @@
 <html lang="ja">
 
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-MJS8PXR3');</script>
+    <!-- ========== Google Tag Manager（計測タグの司令塔）==========
+         GA4・Clarityなどの計測タグは、すべてこのGTM経由で配信します。
+         【読み込む条件】次のどちらかのときだけGTMを読み込みます。
+           1. 本番ドメイン（laviebelle-mf.com）で開かれたとき
+           2. GTMの「プレビュー」で開かれたとき（URLに gtm_debug が付く）
+         デモ用URL（GitHub Pagesなど）を普通に開いたときは読み込まないので、
+         本番の計測データにテストのアクセスが混ざりません。
+         本番に反映するときも、ここは書き換え不要です。 -->
+    <script>
+        (function (w, d, s, l, i) {
+            // 本番ドメインかどうか（www付きも含める）
+            var isProduction = /(^|\.)laviebelle-mf\.com$/.test(w.location.hostname);
+            // GTMのプレビュー（動作確認モード）かどうか
+            var isPreview = /[?&]gtm_debug=/.test(w.location.search);
+            // どちらでもなければ、ここで終了（GTMを読み込まない）
+            if (!isProduction && !isPreview) { return; }
+
+            // dataLayer＝GTMへデータを渡すための配列。なければ空で用意する
+            w[l] = w[l] || [];
+            // 「GTMの読み込みを開始した」という記録を最初に入れる
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            // GTM本体を非同期（ページの表示を止めない形）で読み込む
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MJS8PXR3');
+    </script>
     <!-- End Google Tag Manager -->
 
     <meta charset="UTF-8">
@@ -280,7 +301,8 @@
 </head>
 
 <body>
-    <!-- Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript)
+         JavaScriptが無効な環境向けの予備。画面には表示されません。 -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJS8PXR3" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
@@ -313,7 +335,7 @@
                         target="_blank" rel="noopener" aria-label="Instagram">
                         <img src="images/icon-instagram.svg" alt="">
                     </a>
-                    <a class="header-sns__link" href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener"
+                    <a class="header-sns__link" data-cta="header_icon" href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener"
                         aria-label="LINE">
                         <img src="images/icon-line.svg" alt="">
                     </a>
@@ -487,7 +509,7 @@
                         target="_blank" rel="noopener" aria-label="Instagram">
                         <img src="images/icon-instagram.svg" alt="">
                     </a>
-                    <a href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener" aria-label="LINE">
+                    <a data-cta="footer_icon" href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener" aria-label="LINE">
                         <img src="images/icon-line.svg" alt="">
                     </a>
                 </div>
@@ -524,7 +546,7 @@
                     target="_blank" rel="noopener" aria-label="Instagram">
                     <img src="images/icon-instagram.svg" alt="">
                 </a>
-                <a href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener" aria-label="LINE">
+                <a data-cta="menu_icon" href="https://line.me/R/ti/p/@091pbxqz" target="_blank" rel="noopener" aria-label="LINE">
                     <img src="images/icon-line.svg" alt="">
                 </a>
             </div>
@@ -534,7 +556,7 @@
 
     <!-- 固定予約ボタン -->
     <div class="fixed-reserve">
-        <a href="https://line.me/R/ti/p/@091pbxqz" class="fixed-reserve-btn btn-float" target="_blank" rel="noopener">
+        <a data-cta="fixed" href="https://line.me/R/ti/p/@091pbxqz" class="fixed-reserve-btn btn-float" target="_blank" rel="noopener">
             初回体験をLINEで予約する
         </a>
     </div>
