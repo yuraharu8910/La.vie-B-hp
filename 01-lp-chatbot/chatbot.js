@@ -19,13 +19,14 @@
        設定（ここだけ書き換えればOK）
     ------------------------------------------------------- */
     const CONFIG = {
-        mode: "sheets",             // "ui" → "sheets" → "ai" の順に進めていく（今は段階2）
+        mode: "ai",                 // "ui" → "sheets" → "ai" の順に進めていく（今は段階3：AI回答）
 
         // 段階2で使う：スプレッドシートを「ウェブに公開」したCSVのURL
         sheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTzqgQzwy-dMYTnOhCTCtGgDoubpR8PX_hQVsc-Ez_5IADH0-IwK7Jgkr0CN32YE6uS2MFJrPNBSSqv/pub?gid=808699289&single=true&output=csv",
 
-        // 段階3で使う：バックエンドのURL（例：https://xxxx.up.railway.app/chat）
-        apiUrl: "",
+        // 段階3で使う：Google Apps Script を「ウェブアプリ」として公開したURL
+        // （例：https://script.google.com/macros/s/xxxx/exec）
+        apiUrl: "https://script.google.com/macros/s/AKfycbxCXpgxvCp51RYsonR0cLZbVxUpHurpR_BNsv7R7UP6m2Z_RHYN7TuE0VtkZkynisZZ/exec",
 
         // 予約・問い合わせ先（LPと同じ公式LINE）
         lineUrl: "https://line.me/R/ti/p/@091pbxqz",
@@ -241,7 +242,17 @@
     ------------------------------------------------------- */
     async function getAnswer(text) {
         if (CONFIG.mode === "sheets") return answerFromSheet(text);
-        if (CONFIG.mode === "ai") return answerFromAI(text);
+        if (CONFIG.mode === "ai") {
+            try {
+                return await answerFromAI(text);
+            } catch (err) {
+                // AIが使えないとき（クレジット切れ・回数上限・通信エラーなど）は、
+                // 段階2のキーワード回答に自動で切り替える。お客様には普段どおりの回答が出る
+                console.warn("[chatbot] AI回答に失敗したため、キーワード回答に切り替えます：", err.message);
+                pushEvent("chat_ai_fallback"); // 計測：AIが使えなかった回数
+                return answerFromSheet(text);
+            }
+        }
         return answerUiOnly();
     }
 
@@ -261,7 +272,19 @@
         if (faqCache) return faqCache;
         if (!CONFIG.sheetCsvUrl) throw new Error("sheetCsvUrl が設定されていません（chatbot.js の CONFIG）");
 
-        const res = await fetch(CONFIG.sheetCsvUrl);
+        let res;
+        try {
+            // cache: "no-store" … 古いデータを使い回さず、毎回最新のシートを読む
+            res = await fetch(CONFIG.sheetCsvUrl, { cache: "no-store" });
+        } catch (e) {
+            // 「Failed to fetch」はURLに届かなかったときのエラー。よくある原因を表示する
+            throw new Error(
+                "スプレッドシートに接続できませんでした（Failed to fetch）。\n" +
+                "・index.html をファイルから直接開いていないか（Live Server で開く）\n" +
+                "・公開したCSVのURLをブラウザで開いてダウンロードできるか\n" +
+                "・公開した直後は数分かかることがあります"
+            );
+        }
         if (!res.ok) throw new Error(`スプレッドシートを読み込めません（HTTP ${res.status}）。「ウェブに公開」のCSVのURLか確認してください`);
         const csv = await res.text();
 
@@ -310,15 +333,26 @@
 
         // サーバーには「質問」と「直近の会話」だけを送る
         // （ナレッジやAIへの指示文はサーバー側で組み立てるので、ここからは改ざんできない）
-        const res = await fetch(CONFIG.apiUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message: text, history: history.slice(-6) }),
-        });
+        // ※ Google Apps Script に送るときは Content-Type を text/plain にする
+        //   （application/json だとブラウザが事前確認＝プリフライトを送り、GASが受け付けないため）
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 20000); // 20秒で諦める
+        let res;
+        try {
+            res = await fetch(CONFIG.apiUrl, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain;charset=utf-8" },
+                body: JSON.stringify({ message: text, history: history.slice(-6) }),
+                signal: controller.signal,
+            });
+        } finally {
+            clearTimeout(timer);
+        }
 
         let data = {};
         try { data = await res.json(); } catch (_) { /* JSONでない応答 */ }
-        if (!res.ok) throw new Error(data.error || `サーバーエラー（HTTP ${res.status}）`);
+        // GASはエラーでもHTTP 200で返すので、中身の error も確認する
+        if (!res.ok || data.error) throw new Error(data.error || `サーバーエラー（HTTP ${res.status}）`);
         if (!data.reply) throw new Error("サーバーから回答が返ってきませんでした");
 
         return { text: data.reply, showLine: true };
